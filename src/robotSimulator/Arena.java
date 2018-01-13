@@ -1,6 +1,7 @@
 package robotSimulator;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author      Sam Malpass <gf009788@live.reading.ac.uk>
@@ -104,6 +105,44 @@ public class Arena
 		}
 		/*If all tests are passed return false*/
 		return false;	
+	}
+	/**
+	 * Function definition for Add()
+	 * <p>
+	 * Creates temporary variables and objects, tests them within the arena and adds them if the position
+	 * generated is suitable
+	 * <p>
+	 * @return true if robot is created or false if not
+	 */
+	public boolean Add(ArenaObject O)
+	{
+		/*Temporary variable and object declaration*/
+		int TempX = 0, TempY = 0;
+		Random TempR = new Random();
+		/*If there is still space in the arena*/
+		if(Contents.size() < MaxCapacity)
+		{
+			/*Do at least once*/
+			do
+			{
+				/*Generate and set random X and Y positions*/
+				TempX = TempR.nextInt(this.Width - 20);
+				TempY = TempR.nextInt(this.Length - 20);
+				O.SetXPosition(TempX);
+				O.SetYPosition(TempY);
+			/*While the object cannot be placed*/
+			}while (Check(TempX, TempY, O));
+			/*Add object to Contents*/
+			Contents.add(O);
+			/*Return true*/
+			return true;
+		}
+		/*Otherwise*/
+		else
+		{
+			/*Return false*/
+			return false;
+		}
 	}
 	/**
 	 * Function definition for GetWidth()
