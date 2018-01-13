@@ -40,4 +40,148 @@ public abstract class ArenaObject implements Serializable
 	 * IDCalculator is used to ensure unique ID numbers.
 	 */
 	private static int IDCalculator;
+	/**
+	 * Function definition for GetXPosition()
+	 * <p>
+	 * Handles retrieving an object's XPosition.
+	 * <p>
+	 * @return this.XPosition
+	 */
+	public int GetXPosition()
+	{
+		/*Return XPosition*/
+		return this.XPosition;
+	}
+	/**
+	 * Function definition for GetYPosition()
+	 * <p>
+	 * Handles retrieving an object's YPosition.
+	 * <p>
+	 * @return this.YPosition
+	 */
+	public int GetYPosition()
+	{
+		/*Return YPosition*/
+		return this.YPosition;
+	}
+	/**
+	 * Function definition for GetID()
+	 * <p>
+	 * Handles retrieving an object's ID.
+	 * <p>
+	 * @return this.ID
+	 */
+	public int GetID()
+	{
+		/*Return ID*/
+		return this.ID;
+	}
+	/**
+	 * Function definition for GetSize()
+	 * <p>
+	 * Handles retrieving an object's Size.
+	 * <p>
+	 * @return this.Size
+	 */
+	public int GetSize()
+	{
+		/*Return Size*/
+		return this.Size;
+	}
+	/**
+	 * Function definition for GetSolid()
+	 * <p>
+	 * Handles retrieving an object's Solid.
+	 * <p>
+	 * @return this.Solid
+	 */
+	public boolean GetSolid()
+	{
+		/*Return Solid*/
+		return this.Solid;
+	}
+	/**
+	 * Function definition for GetArena()
+	 * <p>
+	 * Handles retrieving an object's Arena.
+	 * <p>
+	 * @return this.Arena
+	 */
+	public Arena GetArena()
+	{
+		/*Return CurrentArena*/
+		return this.CurrentArena;
+	}
+	/**
+	 * Function definition for SetXPosition()
+	 * <p>
+	 * Handles setting an object's XPosition.
+	 * <p>
+	 * @param X is used to set XPosition
+	 */
+	public void SetXPosition(int X)
+	{
+		/*Set XPosition to X*/
+		this.XPosition = X;
+	}
+	/**
+	 * Function definition for SetYPosition()
+	 * <p>
+	 * Handles setting an object's YPosition.
+	 * <p>
+	 * @param Y is used to set YPosition
+	 */
+	public void SetYPosition(int Y)
+	{
+		/*Set YPosition to Y*/
+		this.YPosition = Y;
+	}
+	/**
+	 * Function definition for SetID()
+	 * <p>
+	 * Handles setting an object's ID.
+	 * <p>
+	 * @param I is used to set ID
+	 */
+	public void SetID(int I)
+	{
+		/*Set ID to I*/
+		this.ID = I;
+	}
+	/**
+	 * Function definition for SetSize()
+	 * <p>
+	 * Handles setting an object's Size.
+	 * <p>
+	 * @param S is used to set Size
+	 */
+	public void SetSize(int S)
+	{
+		/*Set Size to S*/
+		this.Size = S;
+	}
+	/**
+	 * Function definition for SetSolid()
+	 * <p>
+	 * Handles setting an object's Solid.
+	 * <p>
+	 * @param B is used to set Solid
+	 */
+	public void SetSolid(boolean B)
+	{
+		/*Set Solid to B*/
+		this.Solid = B;
+	}
+	/**
+	 * Function definition for SetArena()
+	 * <p>
+	 * Handles setting an object's Arena.
+	 * <p>
+	 * @param A is used to set Arena
+	 */
+	public void SetArena(Arena A)
+	{
+		/*Set CurrentArena to A*/
+		this.CurrentArena = A;
+	}
 }
