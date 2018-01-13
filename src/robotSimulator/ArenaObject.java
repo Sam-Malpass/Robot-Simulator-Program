@@ -184,4 +184,16 @@ public abstract class ArenaObject implements Serializable
 		/*Set CurrentArena to A*/
 		this.CurrentArena = A;
 	}
+	/**
+	 * Function definition for IDCalculation()
+	 * <p>
+	 * Handles incrementing the IDCalculator.
+	 * <p>
+	 * @return IDCalculator and increment
+	 */
+	public int IDCalculation()
+	{
+		/*Return IDCalulator++*/
+		return IDCalculator++;
+	}
 }
