@@ -187,6 +187,20 @@ public class Arena
 		return Add(R);
 	}
 	/**
+	 * Function definition for AddLightSource()
+	 * <p>
+	 * Create an object and call Add() with it.
+	 * <p>
+	 * @return true if object is created or false if not
+	 */
+	public boolean AddLightSource()
+	{
+		/*Creates object R of type LightSource*/
+		LightSource R = new LightSource(0, 0, this);
+		/*Return the result of Add(R)*/
+		return Add(R);
+	}
+	/**
 	 * Function definition for GetWidth()
 	 * <p>
 	 * Handles retrieving an object's Width.
