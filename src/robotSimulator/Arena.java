@@ -145,6 +145,20 @@ public class Arena
 		}
 	}
 	/**
+	 * Function definition for addBasicRobot()
+	 * <p>
+	 * Create an object and call Add() with it.
+	 * <p>
+	 * @return true if robot is created or false if not
+	 */
+	public boolean AddBasicRobot()
+	{
+		/*Creates object R of type BasicRobot*/
+		BasicRobot R = new BasicRobot(0, 0, this);
+		/*Return the result of Add(R)*/
+		return Add(R);
+	}
+	/**
 	 * Function definition for GetWidth()
 	 * <p>
 	 * Handles retrieving an object's Width.
