@@ -196,4 +196,14 @@ public abstract class ArenaObject implements Serializable
 		/*Return IDCalulator++*/
 		return IDCalculator++;
 	}
+	/**
+	 * Function definition for ResetIDCalculator()
+	 * <p>
+	 * Handles resetting the IDCalculator.
+	 */
+	public static void ResetIDCalculator()
+	{
+		/*Sets IDCalculator to 0*/
+		IDCalculator = 0;
+	}
 }
