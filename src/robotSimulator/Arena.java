@@ -69,6 +69,43 @@ public class Arena
 		Contents = new ArrayList<ArenaObject>();
 	}
 	/**
+	 * Function definition for Check()
+	 * <p>
+	 * Checks whether an object can be placed at a set position.
+	 * <p>
+	 * @param X is the X coordinate to be tested against
+	 * @param Y is the Y coordinate to be tested against
+	 * @param O is the object to be tested against
+	 * @return true if checks fail or false if all tests succeed
+	 */
+	public boolean Check(int X, int Y, ArenaObject O)
+	{
+		/*If object is outside the walls of the Arena*/
+		if(X < O.GetSize() || Y < O.GetSize() || X > GetWidth()-O.GetSize() || Y >GetLength()-O.GetSize())
+		{
+			/*Returns true*/
+			return true;
+		}
+		/*Otherwise*/
+		else
+		{
+			/*For all objects in the Arena*/
+			for(int ct = 0; ct < Contents.size(); ct++)
+			{
+				/*Create a line between the passed X,Y values and the coordinates of the current object*/
+				LineHandler Checker = new LineHandler(X, Y, Contents.get(ct).GetXPosition(), Contents.get(ct).GetYPosition());
+				/*Check if line length is less than the size of the two objects and greater than 1*/
+				if(Checker.lineLength() < O.GetSize() + Contents.get(ct).GetSize() && Checker.lineLength() > 1)
+				{
+					/*Return True*/
+					return true;
+				}
+			}
+		}
+		/*If all tests are passed return false*/
+		return false;	
+	}
+	/**
 	 * Function definition for GetWidth()
 	 * <p>
 	 * Handles retrieving an object's Width.
