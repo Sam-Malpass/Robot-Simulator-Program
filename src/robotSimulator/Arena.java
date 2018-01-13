@@ -68,4 +68,52 @@ public class Arena
 		/*Sets Contents*/
 		Contents = new ArrayList<ArenaObject>();
 	}
+	/**
+	 * Function definition for GetWidth()
+	 * <p>
+	 * Handles retrieving an object's Width.
+	 * <p>
+	 * @return this.Width
+	 */
+	public int GetWidth() 
+	{
+		/*Return Width*/
+		return Width;
+	}
+	/**
+	 * Function definition for GetLength()
+	 * <p>
+	 * Handles retrieving an object's Length.
+	 * <p>
+	 * @return this.Length
+	 */
+	public int GetLength() 
+	{
+		/*Return Length*/
+		return Length;
+	}
+	/**
+	 * Function definition for SetWidth()
+	 * <p>
+	 * Handles setting an object's Width.
+	 * <p>
+	 * @return this.Width
+	 */
+	public void SetWidth(int W) 
+	{
+		/*Sets Width to W*/
+		Width = W;
+	}
+	/**
+	 * Function definition for SetLength()
+	 * <p>
+	 * Handles setting an object's Length.
+	 * <p>
+	 * @return this.Length
+	 */
+	public void SetLength(int L) 
+	{
+		/*Sets Length to L*/
+		Length = L;
+	}
 }
