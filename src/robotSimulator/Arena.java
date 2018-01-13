@@ -264,6 +264,20 @@ public class Arena
 		ArenaObject.ResetIDCalculator();
 	}
 	/**
+	 * Function definition for Simulate()
+	 * <p>
+	 * For all objects within the arena, attempt a movement.
+	 */
+	public void Simulate()
+	{
+		/*For all objects in the arena*/
+		for(int ct = 0; ct < Contents.size(); ct++)
+		{
+			/*Attempt a movement*/
+			Contents.get(ct).AttemptMove();
+		}
+	}
+	/**
 	 * Function definition for GetWidth()
 	 * <p>
 	 * Handles retrieving an object's Width.
