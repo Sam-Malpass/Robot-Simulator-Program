@@ -201,6 +201,20 @@ public class Arena
 		return Add(R);
 	}
 	/**
+	 * Function definition for AddObstacleBlock()
+	 * <p>
+	 * Create an object and call Add() with it.
+	 * <p>
+	 * @return true if object is created or false if not
+	 */
+	public boolean AddObstacleBlock()
+	{
+		/*Creates object R of type ObstacleBlock*/
+		ObstacleBlock R = new ObstacleBlock(0, 0, this);
+		/*Return the result of Add(R)*/
+		return Add(R);
+	}
+	/**
 	 * Function definition for GetWidth()
 	 * <p>
 	 * Handles retrieving an object's Width.
