@@ -252,6 +252,18 @@ public class Arena
 		return s;
 	}
 	/**
+	 * Function definition for ClearAll()
+	 * <p>
+	 * Handles resetting the IDCalculator and clearing the arena of objects.
+	 */
+	public void ClearAll()
+	{
+		/*Clear the ArrayList Contents*/
+		Contents.clear();
+		/*Set the IDCalculator to 0*/
+		ArenaObject.ResetIDCalculator();
+	}
+	/**
 	 * Function definition for GetWidth()
 	 * <p>
 	 * Handles retrieving an object's Width.
