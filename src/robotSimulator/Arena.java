@@ -215,6 +215,43 @@ public class Arena
 		return Add(R);
 	}
 	/**
+	 * Function definition for ListContents()
+	 * <p>
+	 * Handles listing the IDs and positions of all objects within the arena, by going through all object in the arena and adding
+	 * the data to a string builder.
+	 * <p>
+	 * @return s which is the string builder
+	 */
+	public String ListContents()
+	{
+		/*Declare a String to act as a string builder*/
+		String s = "";
+		/*For all objects in the arena*/
+		for(int ct = 0; ct < Contents.size(); ct++)
+		{
+			/*If the object is a LightSource*/
+			if(Contents.get(ct) instanceof LightSource)
+			{
+				/*Add the LightSource's data to the string builder s*/
+				s += "Light: " + Contents.get(ct).GetID() + "  X:" + Contents.get(ct).GetXPosition() + "  Y:" + Contents.get(ct).GetYPosition() + "\n";	
+			}
+			/*If the object is an ObstacleBlock*/
+			else if(Contents.get(ct) instanceof ObstacleBlock)
+			{
+				/*Add the ObstacleBlock's data to the string builder s*/
+				s += "Obstacle: " + Contents.get(ct).GetID() + "  X:" + Contents.get(ct).GetXPosition() + "  Y:" + Contents.get(ct).GetYPosition() + "\n";
+			}
+			/*Otherwise the object must a robot*/
+			else
+			{
+				/*Add the Robot's data to the string builder s*/
+				s += "Robot: " + Contents.get(ct).GetID() + "  X:" + Contents.get(ct).GetXPosition() + "  Y:" + Contents.get(ct).GetYPosition() + "\n";
+			}
+		}
+		/*Return s*/
+		return s;
+	}
+	/**
 	 * Function definition for GetWidth()
 	 * <p>
 	 * Handles retrieving an object's Width.
