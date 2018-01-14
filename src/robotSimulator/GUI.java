@@ -483,7 +483,6 @@ public class GUI extends Application
 		    	int W = GetValue("Arena Width (Min 41, Max 500)");
 		    	int L = GetValue("Arena Length (Min 41, Max 500");
 		    	int C = (W * L) / (4*20*20);
-		    	System.out.println(C);
 		    	/*If any of the values are less than or equal to 0*/
 		    	if(W <= 40 || L <= 40 || C <= 0)
 		    	{
