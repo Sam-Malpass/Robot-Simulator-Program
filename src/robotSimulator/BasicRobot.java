@@ -6,5 +6,12 @@ package robotSimulator;
  */
 public class BasicRobot extends ArenaObject
 {
-
+	/**
+	 * DirectionChangeFlag holds whether the robot needs to change direction.
+	 */
+	private boolean DirectionChangeFlag;
+	/**
+	 * Direction holds the robot's current direction.
+	 */
+	private DirectionHandler Direction;
 }
