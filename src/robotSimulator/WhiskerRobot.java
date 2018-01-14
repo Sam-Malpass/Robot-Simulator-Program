@@ -99,4 +99,74 @@ public class WhiskerRobot extends BasicRobot
 			this.SetYPosition(TempY);
 		}
 	}
+	/**
+	 * Function definition for RWhiskerCheck()
+	 * <p>
+	 * If the whisker is touching something that is solid, it should return true
+	 * otherwise it will return false.
+	 * <p>
+	 * @return the result of all the checks
+	 */
+	public boolean RWhiskerCheck()
+	{
+		/*For all objects in the Arena*/
+		for(int ct = 0; ct < GetArena().Contents.size(); ct++)
+		{
+			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
+			if((GetArena().Contents.get(ct).GetID() == this.GetID() && ct > 0) || GetArena().Contents.get(ct) instanceof LightSource)
+			{
+				/*Just move to the next object*/
+				ct++;
+			}
+			/*If the whisker is touching the Arena boundaries*/
+			else if(RWhisker.GetCoords()[2] < 0 || RWhisker.GetCoords()[3] < 0|| RWhisker.GetCoords()[2] > GetArena().GetWidth()|| RWhisker.GetCoords()[3] > GetArena().GetLength())
+			{
+				/*Return true*/
+				return true;
+			}
+			/*If the whisker is touching a solid object*/
+			else if(RWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) < GetArena().Contents.get(ct).GetSize())
+			{
+				/*Return true*/
+				return true;
+			}
+		}
+		/*Return false*/
+		return false;
+	}
+	/**
+	 * Function definition for LWhiskerCheck()
+	 * <p>
+	 * If the whisker is touching something that is solid, it should return true
+	 * otherwise it will return false.
+	 * <p>
+	 * @return the result of all the checks
+	 */
+	public boolean LWhiskerCheck()
+	{
+		/*For all objects in the Arena*/
+		for(int ct = 0; ct < GetArena().Contents.size(); ct++)
+		{
+			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
+			if((GetArena().Contents.get(ct).GetID() == this.GetID() && ct > 0) || (GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock)))
+			{
+				/*Just move to the next object*/
+				ct++;
+			}
+			/*If the whisker is touching the Arena boundaries*/
+			else if(LWhisker.GetCoords()[2] < 0 || LWhisker.GetCoords()[3] < 0 || LWhisker.GetCoords()[2] > GetArena().GetWidth() || LWhisker.GetCoords()[3] > GetArena().GetLength())
+			{
+				/*Return true*/
+				return true;
+			}
+			/*If the whisker is touching a solid object*/
+			else if(LWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) < GetArena().Contents.get(ct).GetSize())
+			{
+				/*Return true*/
+				return true;
+			}
+		}
+		/*Return false*/
+		return false;
+	}
 }
