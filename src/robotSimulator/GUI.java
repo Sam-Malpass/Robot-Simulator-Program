@@ -138,21 +138,15 @@ public class GUI extends Application
 		gc.strokeLine(0, Arena.GetLength(), 0, 0);
 	}
 	/**
-	 * Function definition for DrawObjects()
+	 * Function definition for DrawWhiskerRobot()
 	 * <p>
-	 * For all objects within the Arena, determines the object type and draws
-	 * the corresponding object.
+	 * Draw all the WhiskerRobots in the Arena
 	 */
-	public void DrawObjects()
+	public void DrawWhiskerRobot()
 	{
-		/*For all objects in the Arena*/
 		for (int ct = 0; ct < Arena.Contents.size(); ct++)
 		{
-			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
 			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
-			/*Set colour to BLACK*/
-			gc.setStroke(Color.BLACK);
-			/*If the object is a WhiskerRobot*/
 			if(Arena.Contents.get(ct) instanceof WhiskerRobot)
 			{
 				/*Create a temporary WhiskerRobot by casting the current object*/
@@ -212,9 +206,23 @@ public class GUI extends Application
 					gc.strokeLine(X+20, Y, X+40, Y-20);
 				}
 			}
-			/*If object is a LightRobot*/
-			else if(Arena.Contents.get(ct) instanceof LightRobot)
+		}
+	}
+	/**
+	 * Function definition for DrawLightRobot()
+	 * <p>
+	 * Draw all the LightRobots in the Arena
+	 */
+	public void DrawLightRobot()
+	{
+		/*For all objects in the Arena*/
+		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		{
+			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
+			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			if(Arena.Contents.get(ct) instanceof LightRobot)
 			{
+				gc.setStroke(Color.BLACK);
 				/*Create a LightRobot by casting the current object*/
 				LightRobot B = (LightRobot) Arena.Contents.get(ct);
 				/*Set colour to PURPLE*/
@@ -276,8 +284,23 @@ public class GUI extends Application
 					gc.strokeLine(X+17, Y+5, X+17, Y-5);
 				}
 			}
+		}
+		gc.setStroke(Color.BLACK);
+	}
+	/**
+	 * Function definition for DrawBasicRobot()
+	 * <p>
+	 * Draw all the BasicRobots in the Arena
+	 */
+	public void DrawBasicRobot()
+	{
+		/*For all objects in the Arena*/
+		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		{
+			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
+			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
 			/*If the object is a BasicRobot*/
-			else if(Arena.Contents.get(ct) instanceof BasicRobot)
+			if(Arena.Contents.get(ct) instanceof BasicRobot && !(Arena.Contents.get(ct) instanceof WhiskerRobot) && !(Arena.Contents.get(ct) instanceof LightRobot))
 			{
 				/*Create a BasicRobot by casting the current object*/
 				BasicRobot B = (BasicRobot) Arena.Contents.get(ct);
@@ -302,16 +325,43 @@ public class GUI extends Application
 					gc.strokeLine(X+10,Y-17,X-10,Y-17);
 				}
 			}
+		}
+	}
+	/**
+	 * Function definition for DrawLightSource()
+	 * <p>
+	 * Draw all LightSources in the Arena
+	 */
+	public void DrawLightSource()
+	{
+		/*For all objects in the Arena*/
+		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		{
+			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
+			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
 			/*If the object is a LightSource*/
-			else if(Arena.Contents.get(ct) instanceof LightSource)
+			if(Arena.Contents.get(ct) instanceof LightSource)
 			{
 				/*Set colour to YELLOW*/
 				gc.setFill(Color.rgb(255, 255, 0, 0.5));
 				/*Draw a circle to represent the light*/
 				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
 			}
-			/*Otherwise the object must be an ObstacleBlock*/
-			else
+		}
+	}
+	/**
+	 * Function definition for DrawObstacleBlock()
+	 * <p>
+	 * Draws all ObstacleBlocks in the Arena
+	 */
+	public void DrawObstacleBlock()
+	{
+		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		{
+			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
+			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			/*If the object is an ObstacleBlock*/
+			if(Arena.Contents.get(ct) instanceof ObstacleBlock)
 			{
 				/*Set colour to BLACK*/
 				gc.setFill(Color.BLACK);
@@ -319,6 +369,19 @@ public class GUI extends Application
 				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
 			}
 		}
+	}
+	/**
+	 * Function definition for DrawObjects()
+	 * <p>
+	 * Calls the drawing functions for each of the object types
+	 */
+	public void DrawObjects()
+	{
+		DrawWhiskerRobot();
+		DrawLightRobot();
+		DrawBasicRobot();
+		DrawObstacleBlock();
+		DrawLightSource();
 	}
 	/**
 	 * Function definition for DrawStatus()
