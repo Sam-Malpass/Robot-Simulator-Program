@@ -112,7 +112,7 @@ public class BasicRobot extends ArenaObject
 			for(int ct = 0; ct < GetArena().Contents.size(); ct++)
 			{
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
-				LineHandler Checker = new LineHandler(X, Y, GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition());
+				Line Checker = new Line(X, Y, GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition());
 				if(GetArena().Contents.get(ct) instanceof LightSource)
 				{
 				}
