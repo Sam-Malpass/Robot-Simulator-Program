@@ -324,4 +324,20 @@ public class GUI extends Application
 		/*Add the Label to rtPane*/
 		rtPane.getChildren().add(l);
 	}
+	/**
+	 * Function definition for DrawAll()
+	 * <p>
+	 * Clears the Canvas before calling DrawArena(), DrawObjects() and DrawStatus().
+	 */
+	public void DrawAll()
+	{
+		/*Clear Canvas*/
+		gc.clearRect(0, 0, CanvasSize, CanvasSize);
+		/*Draw the Arena*/
+		DrawArena();
+		/*Draw the objects*/
+		DrawObjects();
+		/*Draw the positions of the objects*/
+		DrawStatus();
+	}
 }
