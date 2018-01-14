@@ -1,5 +1,6 @@
 package robotSimulator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,7 +9,7 @@ import java.util.Random;
  * @version     1.0
  * @since       1.0        
  */
-public class Arena 
+public class Arena implements Serializable
 {
 	/**
 	 * serialVersionUID is used for saving created objects
