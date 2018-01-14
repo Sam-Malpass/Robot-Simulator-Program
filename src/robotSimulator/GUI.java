@@ -3,6 +3,8 @@ package robotSimulator;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 /**
@@ -40,4 +42,27 @@ public class GUI extends Application
 	 * Timer acts as a measure for the Animation
 	 */
 	private AnimationTimer Timer;
+	/**
+	 * Function definition for AlertWindow()
+	 * <p>
+	 * Creates a new Alert of type INFORMATION before setting the title
+	 * of said alert to titleStr and the content to contentStr. The Alert is
+	 * then shown.
+	 * <p>
+	 * @param titleStr is the string used for the title of the window
+	 * @param contentStr is the string used for the content of the window
+	 */
+	private void AlertWindow(String titleStr, String contentStr) 
+	{
+		/*Creates object alert of type Alert*/
+		Alert alert = new Alert(AlertType.INFORMATION);
+		/*Sets alert title to titleStr*/
+		alert.setTitle(titleStr);
+		/*Sets alert header text to null*/
+		alert.setHeaderText(null);
+		/*Sets alert content to contentStr*/
+		alert.setContentText(contentStr);
+		/*Shows alert and waits*/
+		alert.showAndWait();
+	}
 }
