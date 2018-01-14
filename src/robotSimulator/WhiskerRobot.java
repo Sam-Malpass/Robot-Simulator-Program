@@ -15,4 +15,35 @@ public class WhiskerRobot extends ArenaObject
 	 * LWhisker is a LineHandler object acting as the left whisker
 	 */
 	LineHandler LWhisker;
+	/**
+	 * Constructor with no arguments.
+	 * <p>
+	 * Calls the constructor for BasicRobot
+	 * <p>
+	 */
+	WhiskerRobot()
+	{
+		/*Calls the BasicRobot constructor without arguments*/
+		super();
+		/*Creates the RWhisker*/
+		RWhisker = RWhiskerHandler();
+		/*Creates the LWhisker*/
+		LWhisker = LWhiskerHandler();
+	}
+	/**
+	 * Constructor with arguments.
+	 * <p>
+	 * Calls the constructor for BasicRobot using the parameters
+	 * as the arguments.
+	 * <p>
+	 */
+	WhiskerRobot(int X, int Y, Arena A)
+	{
+		/*Calls the BasicRobot constructor with arguments*/
+		super(X, Y, A);
+		/*Creates the RWhisker*/
+		RWhisker = RWhiskerHandler();
+		/*Creates the LWhisker*/
+		LWhisker = LWhiskerHandler();
+	}
 }
