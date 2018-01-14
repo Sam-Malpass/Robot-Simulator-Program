@@ -7,5 +7,12 @@ package robotSimulator;
 @SuppressWarnings("serial")
 public class WhiskerRobot extends ArenaObject
 {
-
+	/**
+	 * RWhisker is a LineHandler object acting as the right whisker
+	 */
+	LineHandler RWhisker;
+	/**
+	 * LWhisker is a LineHandler object acting as the left whisker
+	 */
+	LineHandler LWhisker;
 }
