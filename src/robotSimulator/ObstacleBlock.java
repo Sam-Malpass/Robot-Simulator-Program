@@ -52,4 +52,16 @@ public class ObstacleBlock extends ArenaObject
 		/*Sets Arena to A*/
 		this.SetArena(A);
 	}
+	/**
+	 * Function definition for AttemptMove()
+	 * <p>
+	 * Handles moving the object by an X or a Y Position
+	 * <p>
+	 * @return instantly as the object doesn't move.
+	 */
+	public void AttemptMove()
+	{
+		/*Returns*/
+		return;
+	}
 }
