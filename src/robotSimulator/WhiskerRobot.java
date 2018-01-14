@@ -8,13 +8,13 @@ package robotSimulator;
 public class WhiskerRobot extends BasicRobot
 {
 	/**
-	 * RWhisker is a LineHandler object acting as the right whisker
+	 * RWhisker is a Line object acting as the right whisker
 	 */
-	LineHandler RWhisker;
+	Line RWhisker;
 	/**
-	 * LWhisker is a LineHandler object acting as the left whisker
+	 * LWhisker is a Line object acting as the left whisker
 	 */
-	LineHandler LWhisker;
+	Line LWhisker;
 	/**
 	 * Constructor with no arguments.
 	 * <p>
@@ -172,63 +172,63 @@ public class WhiskerRobot extends BasicRobot
 	/**
 	 * Function definition for RWhiskerHandler()
 	 * <p>
-	 * Creates a temporary LineHandler object based on the direction the WhiskerRobot
-	 * is facing. Returns the LineHandler object when done
+	 * Creates a temporary Line object based on the direction the WhiskerRobot
+	 * is facing. Returns the Line object when done
 	 * <p>
-	 * @return the temporary LineHandler
+	 * @return the temporary Line
 	 */
-	public LineHandler RWhiskerHandler()
+	public Line RWhiskerHandler()
 	{
-		/*Create object Temp of type LineHandler*/
-		LineHandler Temp = new LineHandler();
-		/*Depending on WhiskerRobot's direction, Re-create the LineHandler*/
+		/*Create object Temp of type Line*/
+		Line Temp = new Line();
+		/*Depending on WhiskerRobot's direction, Re-create the Line*/
 		switch(GetDirection())
 		{
 		case UP:
-			Temp = new LineHandler(GetXPosition(), GetYPosition()-GetSize(), GetXPosition()+GetSize(), GetYPosition() - 40);
+			Temp = new Line(GetXPosition(), GetYPosition()-GetSize(), GetXPosition()+GetSize(), GetYPosition() - 40);
 			return Temp;
 		case DOWN:
-			Temp = new LineHandler(GetXPosition(), GetYPosition()+GetSize(), GetXPosition()-GetSize(), GetYPosition() + 40);
+			Temp = new Line(GetXPosition(), GetYPosition()+GetSize(), GetXPosition()-GetSize(), GetYPosition() + 40);
 			return Temp;
 		case LEFT:
-			Temp = new LineHandler(GetXPosition()-GetSize(), GetYPosition(), GetXPosition() - 40, GetYPosition() - GetSize());
+			Temp = new Line(GetXPosition()-GetSize(), GetYPosition(), GetXPosition() - 40, GetYPosition() - GetSize());
 			return Temp;
 		case RIGHT:
-			Temp = new LineHandler(GetXPosition()+GetSize(), GetYPosition(), GetXPosition() + 40, GetYPosition() + GetSize());
+			Temp = new Line(GetXPosition()+GetSize(), GetYPosition(), GetXPosition() + 40, GetYPosition() + GetSize());
 			return Temp;
 		}
-		/*Return the LineHandler*/
+		/*Return the Line*/
 		return Temp;
 	}
 	/**
 	 * Function definition for LWhiskerHandler()
 	 * <p>
-	 * Creates a temporary LineHandler object based on the direction the WhiskerRobot
-	 * is facing. Returns the LineHandler object when done
+	 * Creates a temporary Line object based on the direction the WhiskerRobot
+	 * is facing. Returns the Line object when done
 	 * <p>
-	 * @return the temporary LineHandler
+	 * @return the temporary Line
 	 */
-	public LineHandler LWhiskerHandler()
+	public Line LWhiskerHandler()
 	{
-		/*Create object Temp of type LineHandler*/
-		LineHandler Temp = new LineHandler();
-		/*Depending on WhiskerRobot's direction, Re-create the LineHandler*/
+		/*Create object Temp of type Line*/
+		Line Temp = new Line();
+		/*Depending on WhiskerRobot's direction, Re-create the Line*/
 		switch(GetDirection())
 		{
 		case UP:
-			Temp = new LineHandler(GetXPosition(), GetYPosition()-GetSize(), GetXPosition()-GetSize(), GetYPosition() - 40);
+			Temp = new Line(GetXPosition(), GetYPosition()-GetSize(), GetXPosition()-GetSize(), GetYPosition() - 40);
 			return Temp;
 		case DOWN:
-			Temp = new LineHandler(GetXPosition(), GetYPosition()+GetSize(), GetXPosition()+GetSize(), GetYPosition() + 40);
+			Temp = new Line(GetXPosition(), GetYPosition()+GetSize(), GetXPosition()+GetSize(), GetYPosition() + 40);
 			return Temp;
 		case LEFT:
-			Temp = new LineHandler(GetXPosition()-GetSize(), GetYPosition(), GetXPosition() - 40, GetYPosition() + GetSize());
+			Temp = new Line(GetXPosition()-GetSize(), GetYPosition(), GetXPosition() - 40, GetYPosition() + GetSize());
 			return Temp;
 		case RIGHT:
-			Temp = new LineHandler(GetXPosition()+GetSize(), GetYPosition(), GetXPosition() + 40, GetYPosition() - GetSize());
+			Temp = new Line(GetXPosition()+GetSize(), GetYPosition(), GetXPosition() + 40, GetYPosition() - GetSize());
 			return Temp;
 		}
-		/*Return the LineHandler*/
+		/*Return the Line*/
 		return Temp;
 	}
 }

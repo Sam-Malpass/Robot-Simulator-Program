@@ -67,6 +67,10 @@ public class Line implements Serializable{
 	public int[] getXY() {
 		return xy;
 	}
+	public int[] GetCoords()
+	{
+		return coords;
+	}
 	/**
 	 * return calculated gradient of line, m as in y = mx + c
 	 * @return gradient

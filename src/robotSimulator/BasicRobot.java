@@ -16,6 +16,28 @@ public class BasicRobot extends ArenaObject
 	 */
 	private DirectionHandler Direction;
 	/**
+	 * Constructor with no arguments.
+	 * <p>
+	 * Constructs a BasicRobot object using pre-determined
+	 * values.
+	 * <p>
+	 */
+	BasicRobot()
+	{
+		/*Sets ID*/
+		this.SetID(IDCalculation());
+		/*Sets XPosition*/
+		this.SetXPosition(20);
+		/*Sets YPosition*/
+		this.SetYPosition(20);
+		/*Sets Size*/
+		this.SetSize(20);
+		/*Sets Solid*/
+		this.SetSolid(true);
+		/*Sets Direction to a random direction*/
+		this.SetDirection(DirectionHandler.UP);
+	}
+	/**
 	 * Constructor with arguments.
 	 * <p>
 	 * Constructs a BasicRobot object using values passed to the 
