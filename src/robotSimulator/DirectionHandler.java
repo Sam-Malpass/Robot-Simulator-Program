@@ -42,4 +42,16 @@ public enum DirectionHandler
 		/*Return the next direction in the enumerator*/
 		return values()[(this.ordinal() + 1) % values().length];
 	}
+	/**
+	 * Function definition for PrevDirection()
+	 * <p>
+	 * Returns the previous direction in the enumerator.
+	 * <p>
+	 * @return the previous direction in the enumerator
+	 */
+	public DirectionHandler PrevDirection()
+	{
+		/*Return the previous direction in the enumerator*/
+		return values()[(this.ordinal() + 3) % values().length];
+	}
 }
