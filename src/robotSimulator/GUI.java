@@ -4,9 +4,14 @@ import java.util.Optional;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
@@ -339,5 +344,122 @@ public class GUI extends Application
 		DrawObjects();
 		/*Draw the positions of the objects*/
 		DrawStatus();
+	}
+	/**
+	 * Function definition for SetMenu()
+	 * <p>
+	 * Create a MenuBar, with several Menus that each contain varying amounts of MenuItems.
+	 * <p>
+	 * @return menuBar with all the buttons on it
+	 */
+	MenuBar SetMenu() 
+	{
+		/*Object creation*/
+		MenuBar menuBar = new MenuBar();
+		Menu mFile = new Menu("File");
+		MenuItem mSave = new MenuItem("Save");
+		MenuItem mLoad = new MenuItem("Load");
+		MenuItem mExit = new MenuItem("Exit");
+		/*Defining the action for the option*/
+		mSave.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent actionEvent)
+			{
+				/*Create a FileIO object*/
+				FileIO Save = new FileIO();
+				/*Save the Arena*/
+				Save.Save(Arena);
+			}
+		});
+		/*Defining the action for the option*/
+		mLoad.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent actionEvent) 
+			{
+				/*Create a FileIO object*/
+				FileIO Load = new FileIO();
+				/*Load an Arena*/
+				Arena = Load.Load();
+				/*Toggle the Active variable*/
+				Active = true;
+				/*Draw everything*/
+				DrawAll();
+			}
+		});
+		/*Defining the action for the option*/
+		mExit.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent actionEvent) 
+			{
+				/*Exit the application*/
+				System.exit(0);
+			}
+		});
+		/*Add all sub-options to the mFile option*/
+		mFile.getItems().addAll(mSave, mLoad, mExit);
+		/*Object creation*/
+		Menu mOptions = new Menu("Arena Options");
+		MenuItem mNew = new MenuItem("New Arena");
+		/*Defining the action for the option*/
+		mNew.setOnAction(new EventHandler<ActionEvent>()
+		{
+			public void handle(ActionEvent actionEvent) 
+			{
+				/*Variables are created and assigned values based on information input by the user*/
+		    	int W = GetValue("Arena Width");
+		    	int L = GetValue("Arena Length");
+		    	int C = GetValue("Arena Capacity");
+		    	/*If any of the values are less than or equal to 0*/
+		    	if(W <= 0 || L <= 0 || C <= 0)
+		    	{
+		    		/*Send out an error alert*/
+		    		AlertWindow("Error", "Arena Failed to Create");
+		    	}
+		    	/*Otherwise*/
+		    	else
+		    	{
+		    		/*Create a new Arena using the values*/
+		    		Arena = new Arena(W, L, C);
+		    		/*Toggle the Active variable*/
+		    		Active = true;
+		    		/*Draw everything*/
+		    		DrawAll();
+		    		/*Send out a success alert*/
+		    		AlertWindow("Success", "Arena Created Successfully");
+		    	}
+			}
+		});
+		/*Add the sub-option to the mOption option*/
+		mOptions.getItems().addAll(mNew);
+		/*Object creation*/
+		Menu mHelp = new Menu("Help");
+		MenuItem mInfo = new MenuItem("Information");
+		MenuItem mAbout = new MenuItem("About");
+		/*Defining the action for the option*/
+		mInfo.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent actionEvent) 
+			{
+				/*Send out alert window with specified information*/
+				AlertWindow("Information",
+						"This is the Robot Simulator, to begin, create an arena using the arena options 'new' or load an arena from 'file'. Then add some robots and click start. The robots should then begin moving.");
+			}
+		});
+		/*Defining the action for the option*/
+		mAbout.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent actionEvent) 
+			{
+				/*Send out alert window with the specified information*/
+				AlertWindow("About",
+						"Robot Simulator Program created by Samuel John Malpass, Student Number 24009788 for CS2JA17");
+			}
+		});
+		/*Add sub-buttons to mHelp option*/
+		mHelp.getItems().addAll(mInfo, mAbout);
+		/*Add main options to the menuBar*/
+		menuBar.getMenus().addAll(mFile, mOptions, mHelp);
+		/*Return menuBar*/
+		return menuBar;
 	}
 }
