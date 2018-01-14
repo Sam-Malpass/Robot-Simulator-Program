@@ -3,12 +3,15 @@
  */
 package robotSimulator;
 
+import java.io.Serializable;
+
 /**
  * @author shsmchlr
  * class for representing a line and performing operations on it
  * such as finding whether/where two lines intersect or how far away the lines is from a point
  */
-public class Line {
+public class Line implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int[] coords;		// coordinates of line (x1, y1, x2, y2)
 	private int[] xy;			// xy point used in calculation
 	private double gradient;	// gradient of line
