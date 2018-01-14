@@ -62,4 +62,17 @@ public class LightRobot extends BasicRobot
 		/*If all tests are passed return false*/
 		return false;	
 	}
+	/**
+	 * Function definition for DirectionDeterminator()
+	 * <p>
+	 * Calls the DirectionDeterminator() in Basic Robot.
+	 * <p>
+	 * @param TempX is passed to the super.DirectionDeterminator()
+	 * @param TempY is passed to the super.DirectionDeterminator();
+	 */
+	public int[] DirectionDeterminator(int TempX, int TempY)
+	{
+		/*Return the result from the super.DirectionDeterminator using passed values*/
+		return super.DirectionDeterminator(TempX, TempY);
+	}
 }
