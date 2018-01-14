@@ -1,9 +1,12 @@
 package robotSimulator;
 
+import java.util.Optional;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -64,5 +67,35 @@ public class GUI extends Application
 		alert.setContentText(contentStr);
 		/*Shows alert and waits*/
 		alert.showAndWait();
+	}
+	/**
+	 * Function definition for GetValue()
+	 * <p>
+	 * Creates a dialog box call TStr with an prepared value but allows the user
+	 * to input a new value.
+	 * <p>
+	 * @param TStr is the string used to name the dialog window
+	 * @return the integer input into the box
+	 */
+	private int GetValue(String TStr) 
+	{
+		/*Creates a temporary variable*/
+		int ans = 0;
+		/*Set the input dialog box to a prepared value*/
+		TextInputDialog dialog = new TextInputDialog("500");
+		/*Set the title to TStr*/
+		dialog.setTitle(TStr);
+		/*Set the header text*/
+		dialog.setHeaderText("Enter value for " + TStr);
+		/*Wait for the input to be confirmed by user*/
+		Optional<String> result = dialog.showAndWait();
+		/*If there is a result*/
+		if (result.isPresent()) 
+		{
+			/*Parse the result to ans*/
+			ans = Integer.parseInt(result.get());
+		}
+		/*Return ans*/
+		return ans;
 	}
 }
