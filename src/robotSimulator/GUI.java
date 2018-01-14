@@ -573,7 +573,7 @@ public class GUI extends Application
 			}
 		});
 		/*Object creation*/
-		Button addRobotButton = new Button("Add Robot");
+		Button addRobotButton = new Button("Basic Robot");
 		/*Defining the action for the option*/
 		addRobotButton.setOnAction(new EventHandler<ActionEvent>() 
 		{
@@ -608,7 +608,7 @@ public class GUI extends Application
 			}
 		});
 		/*Object creation*/
-		Button addWhiskerButton = new Button("Add Whisker");
+		Button addWhiskerButton = new Button("Whisker Robot");
 		/*Defining the action for the option*/
 		addWhiskerButton.setOnAction(new EventHandler<ActionEvent>()
 		{
@@ -643,7 +643,7 @@ public class GUI extends Application
 			}
 		});
 		/*Object creation*/
-		Button addLSensorButton = new Button("Add Light Sensor");
+		Button addLSensorButton = new Button("Light Robot");
 		/*Defining the action for the option*/
 		addLSensorButton.setOnAction(new EventHandler<ActionEvent>() 
 		{
@@ -678,7 +678,7 @@ public class GUI extends Application
 			}
 		});
 		/*Object creation*/
-		Button addLightButton = new Button("Add Light");
+		Button addLightButton = new Button("Light");
 		/*Defining the action for the option*/
 		addLightButton.setOnAction(new EventHandler<ActionEvent>() 
 		{
@@ -713,7 +713,7 @@ public class GUI extends Application
 			}
 		});
 		/*Object creation*/
-		Button addObstacleButton = new Button("Add Obstacle");
+		Button addObstacleButton = new Button("Obstacle");
 		/*Defining the action for the option*/
 		addObstacleButton.setOnAction(new EventHandler<ActionEvent>() 
 		{
@@ -762,6 +762,7 @@ public class GUI extends Application
 		});
 		/*Add all the buttons to the ltPane*/
 		ltPane.getChildren().setAll(l1, startButton, pauseButton, l2, addRobotButton, addWhiskerButton, addLSensorButton, addLightButton, addObstacleButton, l3, addClearButton);
+		ltPane.setSpacing(2);
 	}
 	/**
 	 * Function definition for start()
