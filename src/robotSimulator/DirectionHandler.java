@@ -30,4 +30,16 @@ public enum DirectionHandler
 		/*Return a random direction*/
 		return values()[R.nextInt(values().length)];
 	}
+	/**
+	 * Function definition for NextDirection()
+	 * <p>
+	 * Returns the next direction in the enumerator.
+	 * <p>
+	 * @return the next direction in the enumerator
+	 */
+	public DirectionHandler  NextDirection()
+	{
+		/*Return the next direction in the enumerator*/
+		return values()[(this.ordinal() + 1) % values().length];
+	}
 }
