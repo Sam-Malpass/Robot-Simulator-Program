@@ -6,5 +6,10 @@ package robotSimulator;
  */
 public class FileIO 
 {
-
+	/**
+	 * Constructor with no arguments
+	 */
+	FileIO()
+	{	
+	}
 }
