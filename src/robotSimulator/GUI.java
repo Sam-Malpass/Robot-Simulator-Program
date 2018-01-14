@@ -113,6 +113,10 @@ public class GUI extends Application
 			{
 				ans = 500;
 			}
+			else if(ans < 41)
+			{
+				ans = 41;
+			}
 		}
 		/*Return ans*/
 		return ans;

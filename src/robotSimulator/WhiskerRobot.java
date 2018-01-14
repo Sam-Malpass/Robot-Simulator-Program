@@ -113,7 +113,7 @@ public class WhiskerRobot extends BasicRobot
 		for(int ct = 0; ct < GetArena().Contents.size(); ct++)
 		{
 			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
-			if((GetArena().Contents.get(ct).GetID() == this.GetID() && ct > 0) || GetArena().Contents.get(ct) instanceof LightSource)
+			if((GetArena().Contents.get(ct).GetID() == this.GetID()) || GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock))
 			{
 				/*Just move to the next object*/
 				ct++;
@@ -125,7 +125,7 @@ public class WhiskerRobot extends BasicRobot
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(RWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) < GetArena().Contents.get(ct).GetSize())
+			else if(RWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) <= GetArena().Contents.get(ct).GetSize())
 			{
 				/*Return true*/
 				return true;
@@ -148,7 +148,7 @@ public class WhiskerRobot extends BasicRobot
 		for(int ct = 0; ct < GetArena().Contents.size(); ct++)
 		{
 			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
-			if((GetArena().Contents.get(ct).GetID() == this.GetID() && ct > 0) || (GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock)))
+			if((GetArena().Contents.get(ct).GetID() == this.GetID()) || (GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock)))
 			{
 				/*Just move to the next object*/
 				ct++;
@@ -160,7 +160,7 @@ public class WhiskerRobot extends BasicRobot
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(LWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) < GetArena().Contents.get(ct).GetSize())
+			else if(LWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) <= GetArena().Contents.get(ct).GetSize())
 			{
 				/*Return true*/
 				return true;
