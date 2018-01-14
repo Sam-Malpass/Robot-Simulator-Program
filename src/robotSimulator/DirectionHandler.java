@@ -54,4 +54,16 @@ public enum DirectionHandler
 		/*Return the previous direction in the enumerator*/
 		return values()[(this.ordinal() + 3) % values().length];
 	}
+	/**
+	 * Function definition for OppDirection()
+	 * <p>
+	 * Returns the opposite direction in the enumerator.
+	 * <p>
+	 * @return the opposite direction in the enumerator
+	 */
+	public DirectionHandler OppDirection()
+	{
+		/*Return the opposite direction in the enumerator*/
+		return values()[(this.ordinal() + 2) % values().length];
+	}
 }
