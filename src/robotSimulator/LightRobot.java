@@ -51,7 +51,7 @@ public class LightRobot extends BasicRobot
 			for(int ct = 0; ct < GetArena().Contents.size(); ct++)
 			{
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
-				LineHandler Checker = new LineHandler(X, Y, GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition());
+				Line Checker = new Line(X, Y, GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition());
 				/*Check if line length is less than the size of the two objects and greater than 1*/
 				if(Checker.lineLength() < O.GetSize() + GetArena().Contents.get(ct).GetSize() && Checker.lineLength() > 1)
 				{
