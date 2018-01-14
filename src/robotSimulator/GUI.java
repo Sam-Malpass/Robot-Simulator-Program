@@ -11,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcType;
 /**
  * @author      Sam Malpass <gf009788@live.reading.ac.uk>
  * @version     1.0
@@ -123,5 +124,188 @@ public class GUI extends Application
 		gc.strokeLine(Arena.GetWidth(), Arena.GetLength(), 0, Arena.GetLength());
 		/*Draw the left wall*/
 		gc.strokeLine(0, Arena.GetLength(), 0, 0);
+	}
+	/**
+	 * Function definition for DrawObjects()
+	 * <p>
+	 * For all objects within the Arena, determines the object type and draws
+	 * the corresponding object.
+	 */
+	public void DrawObjects()
+	{
+		/*For all objects in the Arena*/
+		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		{
+			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
+			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			/*Set colour to BLACK*/
+			gc.setStroke(Color.BLACK);
+			/*If the object is a WhiskerRobot*/
+			if(Arena.Contents.get(ct) instanceof WhiskerRobot)
+			{
+				/*Create a temporary WhiskerRobot by casting the current object*/
+				WhiskerRobot B = (WhiskerRobot) Arena.Contents.get(ct);
+				/*Set colour to RED*/
+				gc.setFill(Color.RED);
+				/*Draw a circle to represent the body*/
+				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
+				/*Set line width to 5 for the wheels*/
+				gc.setLineWidth(5);
+				/*If the robot's direction is UP*/
+				if(B.GetDirection() == DirectionHandler.UP)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+17,Y+10,X+17,Y-10);
+					gc.strokeLine(X-17,Y+10,X-17,Y-10);
+					/*Set line width to 2 for the whiskers*/
+					gc.setLineWidth(2);
+					/*Draw the whiskers*/
+					gc.strokeLine(X, Y-20, X+20, Y-40);
+					gc.strokeLine(X, Y-20, X-20, Y-40);
+				}
+				/*If the robot's direction is DOWN*/
+				else if(B.GetDirection() == DirectionHandler.DOWN)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+17,Y+10,X+17,Y-10);
+					gc.strokeLine(X-17,Y+10,X-17,Y-10);
+					/*Set line width to 2 for the whiskers*/
+					gc.setLineWidth(2);
+					/*Draw the whiskers*/
+					gc.strokeLine(X, Y+20, X+20, Y+40);
+					gc.strokeLine(X, Y+20, X-20, Y+40);
+				}
+				/*If the robot's direction is LEFT*/
+				else if(B.GetDirection() == DirectionHandler.LEFT)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+10,Y+17,X-10,Y+17);
+					gc.strokeLine(X+10,Y-17,X-10,Y-17);
+					/*Set line width to 2 for the whiskers*/
+					gc.setLineWidth(2);
+					/*Draw the whiskers*/
+					gc.strokeLine(X-20, Y, X-40, Y+20);
+					gc.strokeLine(X-20, Y, X-40, Y-20);
+				}
+				/*If the robot's direction is RIGHT*/
+				else if(B.GetDirection() == DirectionHandler.RIGHT)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+10,Y+17,X-10,Y+17);
+					gc.strokeLine(X+10,Y-17,X-10,Y-17);
+					/*Set line width to 2 for the whiskers*/
+					gc.setLineWidth(2);
+					/*Draw the whiskers*/
+					gc.strokeLine(X+20, Y, X+40, Y+20);
+					gc.strokeLine(X+20, Y, X+40, Y-20);
+				}
+			}
+			/*If object is a LightRobot*/
+			else if(Arena.Contents.get(ct) instanceof LightRobot)
+			{
+				/*Create a LightRobot by casting the current object*/
+				LightRobot B = (LightRobot) Arena.Contents.get(ct);
+				/*Set colour to PURPLE*/
+				gc.setFill(Color.PURPLE);
+				/*Draw a circle to represent the robot's body*/
+				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
+				/*Set line width to 5 for the wheels*/
+				gc.setLineWidth(5);
+				/*If the robot's direction is UP*/
+				if(B.GetDirection() == DirectionHandler.UP)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+17,Y+10,X+17,Y-10);
+					gc.strokeLine(X-17,Y+10,X-17,Y-10);
+					/*Set line width to 2 for the light sensor*/
+					gc.setLineWidth(2);
+					/*Set colour to BLUE*/
+					gc.setStroke(Color.BLUE);
+					/*Draw the light sensor*/
+					gc.strokeLine(X+5, Y-17, X-5, Y-17);
+				}
+				/*If the robot's direction is DOWN*/
+				else if(B.GetDirection() == DirectionHandler.DOWN)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+17,Y+10,X+17,Y-10);
+					gc.strokeLine(X-17,Y+10,X-17,Y-10);
+					/*Set line width to 2 for the light sensor*/
+					gc.setLineWidth(2);
+					/*Set colour to BLUE*/
+					gc.setStroke(Color.BLUE);
+					/*Draw the light sensor*/
+					gc.strokeLine(X+5, Y+17, X-5, Y+17);
+				}
+				/*If the robot's direction is LEFT*/
+				else if(B.GetDirection() == DirectionHandler.LEFT)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+10,Y+17,X-10,Y+17);
+					gc.strokeLine(X+10,Y-17,X-10,Y-17);
+					/*Set line width to 2 for the light sensor*/
+					gc.setLineWidth(2);
+					/*Set colour to BLUE*/
+					gc.setStroke(Color.BLUE);
+					/*Draw the light sensor*/
+					gc.strokeLine(X-17, Y+5, X-17, Y-5);
+				}
+				/*If the robot's direction is RIGHT*/
+				else if(B.GetDirection() == DirectionHandler.RIGHT)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+10,Y+17,X-10,Y+17);
+					gc.strokeLine(X+10,Y-17,X-10,Y-17);
+					/*Set line width to 2 for the light sensor*/
+					gc.setLineWidth(2);
+					/*Set colour to BLUE*/
+					gc.setStroke(Color.BLUE);
+					/*Draw the light sensor*/
+					gc.strokeLine(X+17, Y+5, X+17, Y-5);
+				}
+			}
+			/*If the object is a BasicRobot*/
+			else if(Arena.Contents.get(ct) instanceof BasicRobot)
+			{
+				/*Create a BasicRobot by casting the current object*/
+				BasicRobot B = (BasicRobot) Arena.Contents.get(ct);
+				/*Set colour to GREEN*/
+				gc.setFill(Color.GREEN);
+				/*Draw a circle to represent the robot's body*/
+				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
+				/*Set line width to 5 for the wheels*/
+				gc.setLineWidth(5);
+				/*If the robot's direction is UP or DOWN*/
+				if(B.GetDirection() == DirectionHandler.UP || B.GetDirection() == DirectionHandler.DOWN)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+17,Y+10,X+17,Y-10);
+					gc.strokeLine(X-17,Y+10,X-17,Y-10);
+				}
+				/*If the robot's direction is LEFT or RIGHT*/
+				else if(B.GetDirection() == DirectionHandler.LEFT || B.GetDirection() == DirectionHandler.RIGHT)
+				{
+					/*Draw the wheels*/
+					gc.strokeLine(X+10,Y+17,X-10,Y+17);
+					gc.strokeLine(X+10,Y-17,X-10,Y-17);
+				}
+			}
+			/*If the object is a LightSource*/
+			else if(Arena.Contents.get(ct) instanceof LightSource)
+			{
+				/*Set colour to YELLOW*/
+				gc.setFill(Color.rgb(255, 255, 0, 0.5));
+				/*Draw a circle to represent the light*/
+				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
+			}
+			/*Otherwise the object must be an ObstacleBlock*/
+			else
+			{
+				/*Set colour to BLACK*/
+				gc.setFill(Color.BLACK);
+				/*Draw a circle to represent the block*/
+				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
+			}
+		}
 	}
 }
