@@ -745,4 +745,13 @@ public class GUI extends Application
 		/*Show the window*/
 		mainStage.show();
 	}
+	/**
+	 * Main function
+	 * <p>
+	 * Starts the application.
+	 */
+	public static void main(String[] args) 
+	{
+		Application.launch(args);
+	}
 }
