@@ -6,6 +6,9 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,10 +18,12 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
+import javafx.stage.Stage;
 /**
  * @author      Sam Malpass <gf009788@live.reading.ac.uk>
  * @version     1.0
@@ -685,5 +690,59 @@ public class GUI extends Application
 		});
 		/*Add all the buttons to the ltPane*/
 		ltPane.getChildren().setAll(startButton, pauseButton, addRobotButton, addWhiskerButton, addLSensorButton, addLightButton, addObstacleButton, addClearButton);
+	}
+	/**
+	 * Function definition for start()
+	 * <p>
+	 * Creates all the objects required to setup the application and then,
+	 * when all setup is completed, the window is shown.
+	 */
+	public void start(Stage mainStage) throws Exception 
+	{
+		/*Create new Timer*/
+		Timer = new AnimationTimer()
+		{
+		/*Defining the action for the Timer*/
+		public void handle(long currentNanoTime) 
+		{
+			/*Call Simulate()*/
+			Arena.Simulate();
+			Arena.Simulate();
+			/*Draw everything*/
+			DrawAll();
+		}
+		};
+		/*Set title of the application to "Robot Simulator"*/
+		mainStage.setTitle("Robot Simulator");
+		/*Create a new BorderPane*/
+		BorderPane bPane = new BorderPane();
+		/*Add the menu to the top of bPane*/
+		bPane.setTop(SetMenu());
+		/*Create a new Group*/
+		Group base = new Group();
+		/*Create a new Canvas*/
+		Canvas backdrop = new Canvas(CanvasSize, CanvasSize);
+		/*Set the GraphicsContext to 2D*/
+		gc = backdrop.getGraphicsContext2D();
+		/*Add the Canvas to the base*/
+		base.getChildren().add(backdrop);
+		/*Set the base in the centre*/
+		bPane.setCenter(base);
+		/*Create a new VBox*/
+		rtPane = new VBox();
+		/*Set the VBox to the right side*/
+		bPane.setRight(rtPane);
+		/*Create a new HBox*/
+		ltPane = new HBox();
+		/*Create the buttons*/
+		CreateButtons(ltPane);
+		/*Add the HBox to the BorderPane*/
+		bPane.setBottom(ltPane);
+		/*Create the mainScene*/
+		Scene mainScene = new Scene(bPane, CanvasSize * 1.4, CanvasSize * 1.2);
+		/*Set the stage's scene to the mainScene*/
+		mainStage.setScene(mainScene);
+		/*Show the window*/
+		mainStage.show();
 	}
 }
