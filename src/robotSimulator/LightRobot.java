@@ -75,4 +75,29 @@ public class LightRobot extends BasicRobot
 		/*Return the result from the super.DirectionDeterminator using passed values*/
 		return super.DirectionDeterminator(TempX, TempY);
 	}
+	/**
+	 * Function definition for AttemptMove()
+	 * <p>
+	 * Attempts to move using the LightSensor()
+	 */
+	public void AttemptMove()
+	{
+		/*Create temporary variables using the XPositon and YPosition*/
+		int Coordinate[] = DirectionDeterminator(this.GetXPosition(), this.GetYPosition());
+		int TempX = Coordinate[0], TempY = Coordinate[1];
+		/*If move is not possible*/
+		if(LightSensor(TempX, TempY, this) == true)
+		{
+			/*Set DirectionChangeFlag to true*/
+			SetDirectionChangeFlag(true);
+		}
+		/*Otherwise*/
+		else
+		{
+			/*Set XPosition to TempX*/
+			this.SetXPosition(TempX);
+			/*Set YPosition to TempY*/
+			this.SetYPosition(TempY);
+		}
+	}
 }
