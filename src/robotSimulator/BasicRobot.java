@@ -151,4 +151,52 @@ public class BasicRobot extends ArenaObject
 			this.SetYPosition(TempY);
 		}
 	}
+	/**
+	 * Function definition for GetDirectionChangeFlag()
+	 * <p>
+	 * Handles retrieving an object's DirectionChangeFlag.
+	 * <p>
+	 * @return this.DirectionChangeFlag
+	 */
+	public boolean GetDirectionChangeFlag() 
+	{
+		/*Return DirectionChangeFlag*/
+		return this.DirectionChangeFlag;
+	}
+	/**
+	 * Function definition for GetDirection()
+	 * <p>
+	 * Handles retrieving an object's Direction.
+	 * <p>
+	 * @return this.Direction
+	 */
+	public DirectionHandler GetDirection()
+	{
+		/*Return Direction*/
+		return this.Direction;
+	}
+	/**
+	 * Function definition for SetDirectionChangeFlag()
+	 * <p>
+	 * Handles Setting an object's DirectionChangeFlag.
+	 * <p>
+	 * @return this.DirectionChangeFlag
+	 */
+	public void SetDirectionChangeFlag(boolean DCF)
+	{
+		/*Set DirectionChangeFlag to DCF*/
+		this.DirectionChangeFlag = DCF;
+	}
+	/**
+	 * Function definition for SetDirection()
+	 * <p>
+	 * Handles Setting an object's Direction.
+	 * <p>
+	 * @return this.Direction
+	 */
+	public void SetDirection(DirectionHandler D) 
+	{
+		/*Set Direction to D*/
+		this.Direction = D;
+	}
 }
