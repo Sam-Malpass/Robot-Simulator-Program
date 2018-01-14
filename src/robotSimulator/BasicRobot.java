@@ -41,4 +41,52 @@ public class BasicRobot extends ArenaObject
 		/*Sets Direction to a random direction*/
 		this.SetDirection(DirectionHandler.RandomDirection());
 	}
+	/**
+	 * Function definition for DirectionDeterminator()
+	 * <p>
+	 * Checks whether or not to change the Direction of the robot.
+	 * Determines where the coordinate should be based on the Direction of the robot.
+	 * <p>
+	 * @param TempX  may be changed based on Direction
+	 * @param TempY may be changed based on Direction
+	 */
+	public int[] DirectionDeterminator(int TempX, int TempY)
+	{
+		/*If DirectionChangeFlag is true*/
+		if(this.GetDirectionChangeFlag() == true)
+		{
+			/*Set Direction to the next direction in the enumerator*/
+			this.Direction = Direction.NextDirection();
+			/*Set the DirectionChangeFlag to false*/
+			this.SetDirectionChangeFlag(false);
+		}
+		/*Switch on the Direction*/
+		switch(this.Direction)
+		{
+		/*If UP*/
+		case UP:
+			/*Decrement TempY*/
+			TempY--;
+			break;
+		/*If DOWN*/
+		case DOWN:
+			/*Increment TempY*/
+			TempY++;
+			break;
+		/*If LEFT*/
+		case LEFT:
+			/*Decrement TempX*/
+			TempX--;
+			break;
+		/*If RIGHT*/
+		case RIGHT:
+			/*Increment TempX*/
+			TempX++;
+			break;
+		}
+		/*Declare and set Coordinate to TempX and TempY*/
+		int Coordinate[] = {TempX, TempY};
+		/*Return Coordinate*/
+		return Coordinate;
+	}
 }
