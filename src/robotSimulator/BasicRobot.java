@@ -126,4 +126,29 @@ public class BasicRobot extends ArenaObject
 		/*If all tests are passed return false*/
 		return false;	
 	}
+	/**
+	 * Function definition for AttemptMove()
+	 * <p>
+	 * Handles moving a BasicRobot by an X or Y position.
+	 */
+	public void AttemptMove()
+	{
+		/*Create temporary variables using the XPositon and YPosition*/
+		int Coordinate[] = DirectionDeterminator(this.GetXPosition(), this.GetYPosition());
+		int TempX = Coordinate[0], TempY = Coordinate[1];
+		/*If move is not possible*/
+		if(BumpSensor(TempX, TempY, this) == true)
+		{
+			/*Set DirectionChangeFlag to true*/
+			SetDirectionChangeFlag(true);
+		}
+		/*Otherwise*/
+		else
+		{
+			/*Set XPosition to TempX*/
+			this.SetXPosition(TempX);
+			/*Set YPosition to TempY*/
+			this.SetYPosition(TempY);
+		}
+	}
 }
