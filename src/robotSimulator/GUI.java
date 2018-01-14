@@ -6,6 +6,7 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
@@ -307,5 +308,20 @@ public class GUI extends Application
 				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
 			}
 		}
+	}
+	/**
+	 * Function definition for DrawStatus()
+	 * <p>
+	 * Clear the rtPane, create a new label containing the result of ListContents() and
+	 * then add the label to the rtPane. 
+	 */
+	public void DrawStatus() 
+	{
+		/*Clear the rtPane*/
+		rtPane.getChildren().clear();
+		/*Create a new Label using the result of ListContents()*/
+		Label l = new Label(Arena.ListContents());
+		/*Add the Label to rtPane*/
+		rtPane.getChildren().add(l);
 	}
 }
