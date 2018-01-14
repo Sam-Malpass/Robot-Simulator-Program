@@ -548,6 +548,9 @@ public class GUI extends Application
 	public void CreateButtons(HBox ltPane)
 	{
 		/*Object creation*/
+		Label l1 = new Label("Animation:");
+		Label l2 = new Label("Add:");
+		Label l3 = new Label("Reset:");
 		Button startButton = new Button("Start");
 		/*Defining the action for the option*/
 		startButton.setOnAction(new EventHandler<ActionEvent>()
@@ -758,7 +761,7 @@ public class GUI extends Application
 			}
 		});
 		/*Add all the buttons to the ltPane*/
-		ltPane.getChildren().setAll(startButton, pauseButton, addRobotButton, addWhiskerButton, addLSensorButton, addLightButton, addObstacleButton, addClearButton);
+		ltPane.getChildren().setAll(l1, startButton, pauseButton, l2, addRobotButton, addWhiskerButton, addLSensorButton, addLightButton, addObstacleButton, l3, addClearButton);
 	}
 	/**
 	 * Function definition for start()
@@ -808,7 +811,7 @@ public class GUI extends Application
 		/*Add the HBox to the BorderPane*/
 		bPane.setBottom(ltPane);
 		/*Create the mainScene*/
-		Scene mainScene = new Scene(bPane, CanvasSize * 1.4, CanvasSize * 1.2);
+		Scene mainScene = new Scene(bPane, CanvasSize * 1.5, CanvasSize * 1.2);
 		/*Set the stage's scene to the mainScene*/
 		mainStage.setScene(mainScene);
 		/*Show the window*/
