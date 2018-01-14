@@ -108,6 +108,11 @@ public class GUI extends Application
 		{
 			/*Parse the result to ans*/
 			ans = Integer.parseInt(result.get());
+			/*Prevents Arena being too large*/
+			if(ans > 500)
+			{
+				ans = 500;
+			}
 		}
 		/*Return ans*/
 		return ans;
@@ -475,11 +480,12 @@ public class GUI extends Application
 			public void handle(ActionEvent actionEvent) 
 			{
 				/*Variables are created and assigned values based on information input by the user*/
-		    	int W = GetValue("Arena Width");
-		    	int L = GetValue("Arena Length");
-		    	int C = GetValue("Arena Capacity");
+		    	int W = GetValue("Arena Width (Min 41, Max 500)");
+		    	int L = GetValue("Arena Length (Min 41, Max 500");
+		    	int C = (W * L) / (4*20*20);
+		    	System.out.println(C);
 		    	/*If any of the values are less than or equal to 0*/
-		    	if(W <= 0 || L <= 0 || C <= 0)
+		    	if(W <= 40 || L <= 40 || C <= 0)
 		    	{
 		    		/*Send out an error alert*/
 		    		AlertWindow("Error", "Arena Failed to Create");
