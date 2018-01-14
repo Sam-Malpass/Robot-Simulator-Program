@@ -206,4 +206,8 @@ public abstract class ArenaObject implements Serializable
 		/*Sets IDCalculator to 0*/
 		IDCalculator = 0;
 	}
+	/**
+	 * Abstract function declaration for AttemptMove()
+	 */
+	abstract public void AttemptMove();
 }
