@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -461,5 +462,228 @@ public class GUI extends Application
 		menuBar.getMenus().addAll(mFile, mOptions, mHelp);
 		/*Return menuBar*/
 		return menuBar;
+	}
+	/**
+	 * Function definition for CreateButtons()
+	 * <p>
+	 * Creates several buttons and defines the behaviour for said buttons before adding
+	 * the buttons to the parameter HBox.
+	 * <p>
+	 * @param ltPane is the HBox the buttons will be added to
+	 */
+	public void CreateButtons(HBox ltPane)
+	{
+		/*Object creation*/
+		Button startButton = new Button("Start");
+		/*Defining the action for the option*/
+		startButton.setOnAction(new EventHandler<ActionEvent>()
+		{
+			public void handle(ActionEvent event)
+			{
+				/*Start the timer*/
+				Timer.start();
+			}
+		});
+		/*Object creation*/
+		Button pauseButton = new Button("Pause");
+		/*Defining the action for the option*/
+		pauseButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent event) 
+			{	
+				/*Stop the timer*/
+				Timer.stop();
+			}
+		});
+		/*Object creation*/
+		Button addRobotButton = new Button("Add Robot");
+		/*Defining the action for the option*/
+		addRobotButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent event) 
+			{
+				/*Stop the timer*/
+				Timer.stop();
+				/*If there is an Arena open*/
+		    	if(Active == true)
+		    	{
+		    		/*If the robot is added successfully*/
+		    		if(Arena.AddBasicRobot() == true)
+		    		{
+		    			/*Send a success alert*/
+		    			AlertWindow("Success", "Robot Added Successfully");
+		    			/*Draw everything*/
+		    			DrawAll();
+		    		}
+		    		/*Otherwise*/
+		    		else
+		    		{
+		    			/*Send an error alert*/
+		    			AlertWindow("Error", " Arena at Capacity");
+		    		}
+		    	}
+		    	/*Otherwise*/
+		    	else
+		    	{
+		    		/*Send an error alert*/
+		    		AlertWindow("Error", "No Arena Open");
+		    	}
+			}
+		});
+		/*Object creation*/
+		Button addWhiskerButton = new Button("Add Whisker");
+		/*Defining the action for the option*/
+		addWhiskerButton.setOnAction(new EventHandler<ActionEvent>()
+		{
+			public void handle(ActionEvent event) 
+			{
+				/*Stop the timer*/
+				Timer.stop();
+				/*If there is an Arena open*/
+			    if(Active == true)
+			    {
+			    	/*If the robot is created successfully*/
+			    	if(Arena.AddWhiskerRobot() == true)
+			    	{
+			    		/*Send out a success alert*/
+			    		AlertWindow("Success", "Robot Added Successfully");
+			    		/*Draw everything*/
+			    		DrawAll();
+			    	}
+			    	/*Otherwise*/
+			    	else
+			    	{
+			    		/*Send out an error alert*/
+			    		AlertWindow("Error", " Arena at Capacity");
+			    	}
+			   	}
+			    /*Otherwise*/
+			   	else
+			   	{
+			   		/*Send out an error alert*/
+			   		AlertWindow("Error", "No Arena Open");
+			   	}
+			}
+		});
+		/*Object creation*/
+		Button addLSensorButton = new Button("Add Light Sensor");
+		/*Defining the action for the option*/
+		addLSensorButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent event) 
+			{
+				/*Stop the timer*/
+				Timer.stop();
+				/*If there is an Arena open*/
+			    if(Active == true)
+			    {
+			    	/*If the robot is created successfully*/
+			    	if(Arena.AddLightRobot() == true)
+			    	{
+			    		/*Send out a success alert*/
+			    		AlertWindow("Success", "Robot Added Successfully");
+			    		/*Draw everything*/
+			    		DrawAll();
+			    	}
+			    	/*Otherwise*/
+			    	else
+			    	{
+			    		/*Send out an error alert*/
+			    		AlertWindow("Error", " Arena at Capacity");
+			    	}
+			   	}
+			    /*Otherwise*/
+			   	else
+			   	{
+			   		/*Send out an error alert*/
+			   		AlertWindow("Error", "No Arena Open");
+			   	}
+			}
+		});
+		/*Object creation*/
+		Button addLightButton = new Button("Add Light");
+		/*Defining the action for the option*/
+		addLightButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent event) 
+			{
+				/*Stop the timer*/
+				Timer.stop();
+				/*If there is an Arena open*/
+				if(Active == true)
+		    	{
+					/*If the LightSource is added successfully*/
+		    		if(Arena.AddLightSource() == true)
+		    		{
+		    			/*Send out a success alert*/
+		    			AlertWindow("Success", "Light Source Added Successfully");
+		    			/*Draw everything*/
+		    			DrawAll();
+		    		}
+		    		/*Otherwise*/
+		    		else
+		    		{
+		    			/*Send out an error alert*/
+		    			AlertWindow("Error", "Arena at Capacity");
+		    		}
+		    	}
+				/*Otherwise*/
+		    	else
+		    	{
+		    		/*Send out an error alert*/
+		    		AlertWindow("Error", "No Arena Open");
+		    	}
+			}
+		});
+		/*Object creation*/
+		Button addObstacleButton = new Button("Add Obstacle");
+		/*Defining the action for the option*/
+		addObstacleButton.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			public void handle(ActionEvent event) 
+			{
+				/*Stop the timer*/
+				Timer.stop();
+				/*If there is an Arena open*/
+				if(Active == true)
+		    	{
+					/*If the ObstacleBlock is created successfully*/
+		    		if(Arena.AddObstacleBlock() == true)
+		    		{
+		    			/*Send out a success alert*/
+		    			AlertWindow("Success", "Obstacle Added Successfully");
+		    			/*Draw everything*/
+		    			DrawAll();
+		    		}
+		    		/*Otherwise*/
+		    		else
+		    		{
+		    			/*Send out an error alert*/
+		    			AlertWindow("Error", "Arena at Capacity");
+		    		}
+		    	}
+				/*Otherwise*/
+		    	else
+		    	{
+		    		/*Send out an error alert*/
+		    		AlertWindow("Error", "No Arena Open");
+		    	}
+			}
+		});
+		/*Object creation*/
+		Button addClearButton = new Button("Clear All");
+		/*Defining the action for the option*/
+		addClearButton.setOnAction(new EventHandler<ActionEvent>()
+		{
+			public void handle(ActionEvent event) 
+			{
+				/*Clear every object out of the Arena*/
+				Arena.ClearAll();
+				/*Draw everything*/
+				DrawAll();
+			}
+		});
+		/*Add all the buttons to the ltPane*/
+		ltPane.getChildren().setAll(startButton, pauseButton, addRobotButton, addWhiskerButton, addLSensorButton, addLightButton, addObstacleButton, addClearButton);
 	}
 }
