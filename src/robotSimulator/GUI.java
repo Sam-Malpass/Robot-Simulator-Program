@@ -10,6 +10,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 /**
  * @author      Sam Malpass <gf009788@live.reading.ac.uk>
  * @version     1.0
@@ -97,5 +98,30 @@ public class GUI extends Application
 		}
 		/*Return ans*/
 		return ans;
+	}
+	/**
+	 * Function definition for DrawArena()
+	 * <p>
+	 * Fills a rectangle the size of the Arena on the Canvas before drawing lines
+	 * around said rectangle.
+	 */
+	public void DrawArena()
+	{
+		/*Set colour to DARKGRAY*/
+		gc.setFill(Color.DARKGRAY);
+		/*Fill a rectangle of given size*/
+		gc.fillRect(0, 0, Arena.GetWidth(), Arena.GetLength());
+		/*Set colour to BLACK*/
+		gc.setFill(Color.BLACK);
+		/*Set line width to 1*/
+		gc.setLineWidth(1);
+		/*Draw the top wall*/
+		gc.strokeLine(0,0,Arena.GetWidth(),0);
+		/*Draw the right wall*/
+		gc.strokeLine(Arena.GetWidth(),0, Arena.GetWidth(), Arena.GetLength());
+		/*Draw the bottom wall*/
+		gc.strokeLine(Arena.GetWidth(), Arena.GetLength(), 0, Arena.GetLength());
+		/*Draw the left wall*/
+		gc.strokeLine(0, Arena.GetLength(), 0, 0);
 	}
 }
