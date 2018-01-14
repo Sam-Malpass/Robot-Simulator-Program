@@ -27,4 +27,39 @@ public class LightRobot extends BasicRobot
 	{
 		super(X, Y, A);
 	}
+	/**
+	 * Function definition for LightSensor()
+	 * <p>
+	 * Looks through all arena objects only this time cannot move even if object is a LightSource.
+	 * <p>
+	 * @param X is the X coordinate to be tested
+	 * @param Y is the Y coordinate to be tested
+	 * @param O is the object to be tested
+	 */
+	public boolean LightSensor(int X, int Y, ArenaObject O)
+	{
+		/*If object is outside the walls of the Arena*/
+		if(X < O.GetSize() || Y < O.GetSize() || X > GetArena().GetWidth()-O.GetSize() || Y > GetArena().GetLength()-O.GetSize())
+		{
+			/*Returns true*/
+			return true;
+		}
+		/*Otherwise*/
+		else
+		{
+			/*For all objects in the Arena*/
+			for(int ct = 0; ct < GetArena().Contents.size(); ct++)
+			{
+				/*Create a line between the passed X,Y values and the coordinates of the current object*/
+				LineHandler Checker = new LineHandler(X, Y, GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition());
+				/*Check if line length is less than the size of the two objects and greater than 1*/
+				if(Checker.lineLength() < O.GetSize() + GetArena().Contents.get(ct).GetSize() && Checker.lineLength() > 1)
+				{
+					return true;
+				}
+			}
+		}
+		/*If all tests are passed return false*/
+		return false;	
+	}
 }
