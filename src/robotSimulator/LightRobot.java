@@ -7,5 +7,24 @@ package robotSimulator;
 @SuppressWarnings("serial")
 public class LightRobot extends BasicRobot
 {
-
+	/**
+	 * Constructor with no arguments.
+	 * <p>
+	 * Calls the constructor for BasicRobot
+	 * <p>
+	 */
+	LightRobot()
+	{
+		super();
+	}
+	/**
+	 * Constructor with arguments.
+	 * <p>
+	 * Calls the constructor for BasicRobot
+	 * <p>
+	 */
+	LightRobot(int X, int Y, Arena A)
+	{
+		super(X, Y, A);
+	}
 }
