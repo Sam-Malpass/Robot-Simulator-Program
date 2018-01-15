@@ -32,13 +32,13 @@ import javafx.stage.Stage;
 public class GUI extends Application
 {
 	/**
-	 * CanvasSize is acts as the width and length of the canvas
+	 * canvasSize is acts as the width and length of the canvas
 	 */
-	private int CanvasSize = 500;
+	private int canvasSize = 500;
 	/**
-	 * Arena is an object of type Arena
+	 * arena is an object of type arena
 	 */
-	private Arena Arena;
+	private Arena arena;
 	/**
 	 * gc is the GraphicsContext of the application
 	 */
@@ -52,13 +52,13 @@ public class GUI extends Application
 	 */
 	private HBox ltPane;
 	/**
-	 * Active is a boolean value that says whether an Arena object is open or not
+	 * active is a boolean value that says whether an arena object is open or not
 	 */
-	private boolean Active = false;
+	private boolean active = false;
 	/**
-	 * Timer acts as a measure for the Animation
+	 * timer acts as a measure for the Animation
 	 */
-	private AnimationTimer Timer;
+	private AnimationTimer timer;
 	/**
 	 * Function definition for AlertWindow()
 	 * <p>
@@ -69,7 +69,7 @@ public class GUI extends Application
 	 * @param titleStr is the string used for the title of the window
 	 * @param contentStr is the string used for the content of the window
 	 */
-	private void AlertWindow(String titleStr, String contentStr) 
+	private void alertWindow(String titleStr, String contentStr) 
 	{
 		/*Creates object alert of type Alert*/
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -91,7 +91,7 @@ public class GUI extends Application
 	 * @param TStr is the string used to name the dialog window
 	 * @return the integer input into the box
 	 */
-	private int GetValue(String TStr) 
+	private int getValue(String TStr) 
 	{
 		/*Creates a temporary variable*/
 		int ans = 0;
@@ -108,7 +108,7 @@ public class GUI extends Application
 		{
 			/*Parse the result to ans*/
 			ans = Integer.parseInt(result.get());
-			/*Prevents Arena being too large*/
+			/*Prevents arena being too large*/
 			if(ans > 500)
 			{
 				ans = 500;
@@ -124,42 +124,42 @@ public class GUI extends Application
 	/**
 	 * Function definition for DrawArena()
 	 * <p>
-	 * Fills a rectangle the size of the Arena on the Canvas before drawing lines
+	 * Fills a rectangle the size of the arena on the Canvas before drawing lines
 	 * around said rectangle.
 	 */
-	public void DrawArena()
+	public void drawArena()
 	{
 		/*Set colour to DARKGRAY*/
 		gc.setFill(Color.DARKGRAY);
 		/*Fill a rectangle of given size*/
-		gc.fillRect(0, 0, Arena.getWidth(), Arena.getLength());
+		gc.fillRect(0, 0, arena.getWidth(), arena.getLength());
 		/*Set colour to BLACK*/
 		gc.setFill(Color.BLACK);
 		/*Set line width to 1*/
 		gc.setLineWidth(1);
 		/*Draw the top wall*/
-		gc.strokeLine(0,0,Arena.getWidth(),0);
+		gc.strokeLine(0,0,arena.getWidth(),0);
 		/*Draw the right wall*/
-		gc.strokeLine(Arena.getWidth(),0, Arena.getWidth(), Arena.getLength());
+		gc.strokeLine(arena.getWidth(),0, arena.getWidth(), arena.getLength());
 		/*Draw the bottom wall*/
-		gc.strokeLine(Arena.getWidth(), Arena.getLength(), 0, Arena.getLength());
+		gc.strokeLine(arena.getWidth(), arena.getLength(), 0, arena.getLength());
 		/*Draw the left wall*/
-		gc.strokeLine(0, Arena.getLength(), 0, 0);
+		gc.strokeLine(0, arena.getLength(), 0, 0);
 	}
 	/**
 	 * Function definition for DrawWhiskerRobot()
 	 * <p>
-	 * Draw all the WhiskerRobots in the Arena
+	 * Draw all the WhiskerRobots in the arena
 	 */
-	public void DrawWhiskerRobot()
+	public void drawWhiskerRobot()
 	{
-		for (int ct = 0; ct < Arena.contents.size(); ct++)
+		for (int ct = 0; ct < arena.contents.size(); ct++)
 		{
-			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
-			if(Arena.contents.get(ct) instanceof WhiskerRobot)
+			int S = arena.contents.get(ct).getSize(), X = arena.contents.get(ct).getXPosition(), Y = arena.contents.get(ct).getYPosition();
+			if(arena.contents.get(ct) instanceof WhiskerRobot)
 			{
 				/*Create a temporary WhiskerRobot by casting the current object*/
-				WhiskerRobot B = (WhiskerRobot) Arena.contents.get(ct);
+				WhiskerRobot B = (WhiskerRobot) arena.contents.get(ct);
 				/*Set colour to RED*/
 				gc.setFill(Color.RED);
 				/*Draw a circle to represent the body*/
@@ -220,20 +220,20 @@ public class GUI extends Application
 	/**
 	 * Function definition for DrawLightRobot()
 	 * <p>
-	 * Draw all the LightRobots in the Arena
+	 * Draw all the LightRobots in the arena
 	 */
-	public void DrawLightRobot()
+	public void drawLightRobot()
 	{
-		/*For all objects in the Arena*/
-		for (int ct = 0; ct < Arena.contents.size(); ct++)
+		/*For all objects in the arena*/
+		for (int ct = 0; ct < arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
-			if(Arena.contents.get(ct) instanceof LightRobot)
+			int S = arena.contents.get(ct).getSize(), X = arena.contents.get(ct).getXPosition(), Y = arena.contents.get(ct).getYPosition();
+			if(arena.contents.get(ct) instanceof LightRobot)
 			{
 				gc.setStroke(Color.BLACK);
 				/*Create a LightRobot by casting the current object*/
-				LightRobot B = (LightRobot) Arena.contents.get(ct);
+				LightRobot B = (LightRobot) arena.contents.get(ct);
 				/*Set colour to PURPLE*/
 				gc.setFill(Color.PURPLE);
 				/*Draw a circle to represent the robot's body*/
@@ -299,20 +299,20 @@ public class GUI extends Application
 	/**
 	 * Function definition for DrawBasicRobot()
 	 * <p>
-	 * Draw all the BasicRobots in the Arena
+	 * Draw all the BasicRobots in the arena
 	 */
-	public void DrawBasicRobot()
+	public void drawBasicRobot()
 	{
-		/*For all objects in the Arena*/
-		for (int ct = 0; ct < Arena.contents.size(); ct++)
+		/*For all objects in the arena*/
+		for (int ct = 0; ct < arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
+			int S = arena.contents.get(ct).getSize(), X = arena.contents.get(ct).getXPosition(), Y = arena.contents.get(ct).getYPosition();
 			/*If the object is a BasicRobot*/
-			if(Arena.contents.get(ct) instanceof BasicRobot && !(Arena.contents.get(ct) instanceof WhiskerRobot) && !(Arena.contents.get(ct) instanceof LightRobot))
+			if(arena.contents.get(ct) instanceof BasicRobot && !(arena.contents.get(ct) instanceof WhiskerRobot) && !(arena.contents.get(ct) instanceof LightRobot))
 			{
 				/*Create a BasicRobot by casting the current object*/
-				BasicRobot B = (BasicRobot) Arena.contents.get(ct);
+				BasicRobot B = (BasicRobot) arena.contents.get(ct);
 				/*Set colour to GREEN*/
 				gc.setFill(Color.GREEN);
 				/*Draw a circle to represent the robot's body*/
@@ -339,17 +339,17 @@ public class GUI extends Application
 	/**
 	 * Function definition for DrawLightSource()
 	 * <p>
-	 * Draw all LightSources in the Arena
+	 * Draw all LightSources in the arena
 	 */
-	public void DrawLightSource()
+	public void drawLightSource()
 	{
-		/*For all objects in the Arena*/
-		for (int ct = 0; ct < Arena.contents.size(); ct++)
+		/*For all objects in the arena*/
+		for (int ct = 0; ct < arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
+			int S = arena.contents.get(ct).getSize(), X = arena.contents.get(ct).getXPosition(), Y = arena.contents.get(ct).getYPosition();
 			/*If the object is a LightSource*/
-			if(Arena.contents.get(ct) instanceof LightSource)
+			if(arena.contents.get(ct) instanceof LightSource)
 			{
 				/*Set colour to YELLOW*/
 				gc.setFill(Color.rgb(255, 255, 0, 0.5));
@@ -361,16 +361,16 @@ public class GUI extends Application
 	/**
 	 * Function definition for DrawObstacleBlock()
 	 * <p>
-	 * Draws all ObstacleBlocks in the Arena
+	 * Draws all ObstacleBlocks in the arena
 	 */
-	public void DrawObstacleBlock()
+	public void drawObstacleBlock()
 	{
-		for (int ct = 0; ct < Arena.contents.size(); ct++)
+		for (int ct = 0; ct < arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
+			int S = arena.contents.get(ct).getSize(), X = arena.contents.get(ct).getXPosition(), Y = arena.contents.get(ct).getYPosition();
 			/*If the object is an ObstacleBlock*/
-			if(Arena.contents.get(ct) instanceof ObstacleBlock)
+			if(arena.contents.get(ct) instanceof ObstacleBlock)
 			{
 				/*Set colour to BLACK*/
 				gc.setFill(Color.BLACK);
@@ -384,13 +384,13 @@ public class GUI extends Application
 	 * <p>
 	 * Calls the drawing functions for each of the object types
 	 */
-	public void DrawObjects()
+	public void drawObjects()
 	{
-		DrawWhiskerRobot();
-		DrawLightRobot();
-		DrawBasicRobot();
-		DrawObstacleBlock();
-		DrawLightSource();
+		drawWhiskerRobot();
+		drawLightRobot();
+		drawBasicRobot();
+		drawObstacleBlock();
+		drawLightSource();
 	}
 	/**
 	 * Function definition for DrawStatus()
@@ -398,12 +398,12 @@ public class GUI extends Application
 	 * Clear the rtPane, create a new label containing the result of ListContents() and
 	 * then add the label to the rtPane. 
 	 */
-	public void DrawStatus() 
+	public void drawStatus() 
 	{
 		/*Clear the rtPane*/
 		rtPane.getChildren().clear();
 		/*Create a new Label using the result of ListContents()*/
-		Label l = new Label(Arena.listContents());
+		Label l = new Label(arena.listContents());
 		/*Add the Label to rtPane*/
 		rtPane.getChildren().add(l);
 	}
@@ -412,16 +412,16 @@ public class GUI extends Application
 	 * <p>
 	 * Clears the Canvas before calling DrawArena(), DrawObjects() and DrawStatus().
 	 */
-	public void DrawAll()
+	public void drawAll()
 	{
 		/*Clear Canvas*/
-		gc.clearRect(0, 0, CanvasSize, CanvasSize);
-		/*Draw the Arena*/
-		DrawArena();
+		gc.clearRect(0, 0, canvasSize, canvasSize);
+		/*Draw the arena*/
+		drawArena();
 		/*Draw the objects*/
-		DrawObjects();
+		drawObjects();
 		/*Draw the positions of the objects*/
-		DrawStatus();
+		drawStatus();
 	}
 	/**
 	 * Function definition for SetMenu()
@@ -430,7 +430,7 @@ public class GUI extends Application
 	 * <p>
 	 * @return menuBar with all the buttons on it
 	 */
-	MenuBar SetMenu() 
+	public MenuBar setMenu() 
 	{
 		/*Object creation*/
 		MenuBar menuBar = new MenuBar();
@@ -445,8 +445,8 @@ public class GUI extends Application
 			{
 				/*Create a FileIO object*/
 				FileIO Save = new FileIO();
-				/*Save the Arena*/
-				Save.Save(Arena);
+				/*Save the arena*/
+				Save.Save(arena);
 			}
 		});
 		/*Defining the action for the option*/
@@ -456,12 +456,12 @@ public class GUI extends Application
 			{
 				/*Create a FileIO object*/
 				FileIO Load = new FileIO();
-				/*Load an Arena*/
-				Arena = Load.Load();
-				/*Toggle the Active variable*/
-				Active = true;
+				/*Load an arena*/
+				arena = Load.Load();
+				/*Toggle the active variable*/
+				active = true;
 				/*Draw everything*/
-				DrawAll();
+				drawAll();
 			}
 		});
 		/*Defining the action for the option*/
@@ -476,34 +476,34 @@ public class GUI extends Application
 		/*Add all sub-options to the mFile option*/
 		mFile.getItems().addAll(mSave, mLoad, mExit);
 		/*Object creation*/
-		Menu mOptions = new Menu("Arena Options");
-		MenuItem mNew = new MenuItem("New Arena");
+		Menu mOptions = new Menu("arena Options");
+		MenuItem mNew = new MenuItem("New arena");
 		/*Defining the action for the option*/
 		mNew.setOnAction(new EventHandler<ActionEvent>()
 		{
 			public void handle(ActionEvent actionEvent) 
 			{
 				/*Variables are created and assigned values based on information input by the user*/
-		    	int W = GetValue("Arena Width (Min 41, Max 500)");
-		    	int L = GetValue("Arena Length (Min 41, Max 500");
+		    	int W = getValue("arena Width (Min 41, Max 500)");
+		    	int L = getValue("arena Length (Min 41, Max 500");
 		    	int C = (W * L) / (4*20*20);
 		    	/*If any of the values are less than or equal to 0*/
 		    	if(W <= 40 || L <= 40 || C <= 0)
 		    	{
 		    		/*Send out an error alert*/
-		    		AlertWindow("Error", "Arena Failed to Create");
+		    		alertWindow("Error", "arena Failed to Create");
 		    	}
 		    	/*Otherwise*/
 		    	else
 		    	{
-		    		/*Create a new Arena using the values*/
-		    		Arena = new Arena(W, L, C);
-		    		/*Toggle the Active variable*/
-		    		Active = true;
+		    		/*Create a new arena using the values*/
+		    		arena = new Arena(W, L, C);
+		    		/*Toggle the active variable*/
+		    		active = true;
 		    		/*Draw everything*/
-		    		DrawAll();
+		    		drawAll();
 		    		/*Send out a success alert*/
-		    		AlertWindow("Success", "Arena Created Successfully");
+		    		alertWindow("Success", "arena Created Successfully");
 		    	}
 			}
 		});
@@ -519,7 +519,7 @@ public class GUI extends Application
 			public void handle(ActionEvent actionEvent) 
 			{
 				/*Send out alert window with specified information*/
-				AlertWindow("Information",
+				alertWindow("Information",
 						"This is the Robot Simulator, to begin, create an arena using the arena options 'new' or load an arena from 'file'. Then add some robots and click start. The robots should then begin moving.");
 			}
 		});
@@ -529,7 +529,7 @@ public class GUI extends Application
 			public void handle(ActionEvent actionEvent) 
 			{
 				/*Send out alert window with the specified information*/
-				AlertWindow("About",
+				alertWindow("About",
 						"Robot Simulator Program created by Samuel John Malpass, Student Number 24009788 for CS2JA17");
 			}
 		});
@@ -548,7 +548,7 @@ public class GUI extends Application
 	 * <p>
 	 * @param ltPane is the HBox the buttons will be added to
 	 */
-	public void CreateButtons(HBox ltPane)
+	public void createButtons(HBox ltPane)
 	{
 		/*Object creation*/
 		Label l1 = new Label("Animation:");
@@ -561,7 +561,7 @@ public class GUI extends Application
 			public void handle(ActionEvent event)
 			{
 				/*Start the timer*/
-				Timer.start();
+				timer.start();
 			}
 		});
 		/*Object creation*/
@@ -572,7 +572,7 @@ public class GUI extends Application
 			public void handle(ActionEvent event) 
 			{	
 				/*Stop the timer*/
-				Timer.stop();
+				timer.stop();
 			}
 		});
 		/*Object creation*/
@@ -583,30 +583,30 @@ public class GUI extends Application
 			public void handle(ActionEvent event) 
 			{
 				/*Stop the timer*/
-				Timer.stop();
-				/*If there is an Arena open*/
-		    	if(Active == true)
+				timer.stop();
+				/*If there is an arena open*/
+		    	if(active == true)
 		    	{
 		    		/*If the robot is added successfully*/
-		    		if(Arena.addBasicRobot() == true)
+		    		if(arena.addBasicRobot() == true)
 		    		{
 		    			/*Send a success alert*/
-		    			AlertWindow("Success", "Robot Added Successfully");
+		    			alertWindow("Success", "Robot Added Successfully");
 		    			/*Draw everything*/
-		    			DrawAll();
+		    			drawAll();
 		    		}
 		    		/*Otherwise*/
 		    		else
 		    		{
 		    			/*Send an error alert*/
-		    			AlertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
+		    			alertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
 		    		}
 		    	}
 		    	/*Otherwise*/
 		    	else
 		    	{
 		    		/*Send an error alert*/
-		    		AlertWindow("Error", "No Arena Open");
+		    		alertWindow("Error", "No arena Open");
 		    	}
 			}
 		});
@@ -618,30 +618,30 @@ public class GUI extends Application
 			public void handle(ActionEvent event) 
 			{
 				/*Stop the timer*/
-				Timer.stop();
-				/*If there is an Arena open*/
-			    if(Active == true)
+				timer.stop();
+				/*If there is an arena open*/
+			    if(active == true)
 			    {
 			    	/*If the robot is created successfully*/
-			    	if(Arena.addWhiskerRobot() == true)
+			    	if(arena.addWhiskerRobot() == true)
 			    	{
 			    		/*Send out a success alert*/
-			    		AlertWindow("Success", "Robot Added Successfully");
+			    		alertWindow("Success", "Robot Added Successfully");
 			    		/*Draw everything*/
-			    		DrawAll();
+			    		drawAll();
 			    	}
 			    	/*Otherwise*/
 			    	else
 			    	{
 			    		/*Send out an error alert*/
-			    		AlertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
+			    		alertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
 			    	}
 			   	}
 			    /*Otherwise*/
 			   	else
 			   	{
 			   		/*Send out an error alert*/
-			   		AlertWindow("Error", "No Arena Open");
+			   		alertWindow("Error", "No arena Open");
 			   	}
 			}
 		});
@@ -653,30 +653,30 @@ public class GUI extends Application
 			public void handle(ActionEvent event) 
 			{
 				/*Stop the timer*/
-				Timer.stop();
-				/*If there is an Arena open*/
-			    if(Active == true)
+				timer.stop();
+				/*If there is an arena open*/
+			    if(active == true)
 			    {
 			    	/*If the robot is created successfully*/
-			    	if(Arena.addLightRobot() == true)
+			    	if(arena.addLightRobot() == true)
 			    	{
 			    		/*Send out a success alert*/
-			    		AlertWindow("Success", "Robot Added Successfully");
+			    		alertWindow("Success", "Robot Added Successfully");
 			    		/*Draw everything*/
-			    		DrawAll();
+			    		drawAll();
 			    	}
 			    	/*Otherwise*/
 			    	else
 			    	{
 			    		/*Send out an error alert*/
-			    		AlertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
+			    		alertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
 			    	}
 			   	}
 			    /*Otherwise*/
 			   	else
 			   	{
 			   		/*Send out an error alert*/
-			   		AlertWindow("Error", "No Arena Open");
+			   		alertWindow("Error", "No arena Open");
 			   	}
 			}
 		});
@@ -688,30 +688,30 @@ public class GUI extends Application
 			public void handle(ActionEvent event) 
 			{
 				/*Stop the timer*/
-				Timer.stop();
-				/*If there is an Arena open*/
-				if(Active == true)
+				timer.stop();
+				/*If there is an arena open*/
+				if(active == true)
 		    	{
 					/*If the LightSource is added successfully*/
-		    		if(Arena.addLightSource() == true)
+		    		if(arena.addLightSource() == true)
 		    		{
 		    			/*Send out a success alert*/
-		    			AlertWindow("Success", "Light Source Added Successfully");
+		    			alertWindow("Success", "Light Source Added Successfully");
 		    			/*Draw everything*/
-		    			DrawAll();
+		    			drawAll();
 		    		}
 		    		/*Otherwise*/
 		    		else
 		    		{
 		    			/*Send out an error alert*/
-		    			AlertWindow("Error", "Arena at Capacity");
+		    			alertWindow("Error", "arena at Capacity");
 		    		}
 		    	}
 				/*Otherwise*/
 		    	else
 		    	{
 		    		/*Send out an error alert*/
-		    		AlertWindow("Error", "No Arena Open");
+		    		alertWindow("Error", "No arena Open");
 		    	}
 			}
 		});
@@ -723,30 +723,30 @@ public class GUI extends Application
 			public void handle(ActionEvent event) 
 			{
 				/*Stop the timer*/
-				Timer.stop();
-				/*If there is an Arena open*/
-				if(Active == true)
+				timer.stop();
+				/*If there is an arena open*/
+				if(active == true)
 		    	{
 					/*If the ObstacleBlock is created successfully*/
-		    		if(Arena.addObstacleBlock() == true)
+		    		if(arena.addObstacleBlock() == true)
 		    		{
 		    			/*Send out a success alert*/
-		    			AlertWindow("Success", "Obstacle Added Successfully");
+		    			alertWindow("Success", "Obstacle Added Successfully");
 		    			/*Draw everything*/
-		    			DrawAll();
+		    			drawAll();
 		    		}
 		    		/*Otherwise*/
 		    		else
 		    		{
 		    			/*Send out an error alert*/
-		    			AlertWindow("Error", "Arena at Capacity");
+		    			alertWindow("Error", "arena at Capacity");
 		    		}
 		    	}
 				/*Otherwise*/
 		    	else
 		    	{
 		    		/*Send out an error alert*/
-		    		AlertWindow("Error", "No Arena Open");
+		    		alertWindow("Error", "No arena Open");
 		    	}
 			}
 		});
@@ -757,10 +757,10 @@ public class GUI extends Application
 		{
 			public void handle(ActionEvent event) 
 			{
-				/*Clear every object out of the Arena*/
-				Arena.clearAll();
+				/*Clear every object out of the arena*/
+				arena.clearAll();
 				/*Draw everything*/
-				DrawAll();
+				drawAll();
 			}
 		});
 		/*Add all the buttons to the ltPane*/
@@ -775,17 +775,17 @@ public class GUI extends Application
 	 */
 	public void start(Stage mainStage) throws Exception 
 	{
-		/*Create new Timer*/
-		Timer = new AnimationTimer()
+		/*Create new timer*/
+		timer = new AnimationTimer()
 		{
-		/*Defining the action for the Timer*/
+		/*Defining the action for the timer*/
 		public void handle(long currentNanoTime) 
 		{
 			/*Call Simulate()*/
-			Arena.simulate();
-			Arena.simulate();
+			arena.simulate();
+			arena.simulate();
 			/*Draw everything*/
-			DrawAll();
+			drawAll();
 		}
 		};
 		/*Set title of the application to "Robot Simulator"*/
@@ -793,11 +793,11 @@ public class GUI extends Application
 		/*Create a new BorderPane*/
 		BorderPane bPane = new BorderPane();
 		/*Add the menu to the top of bPane*/
-		bPane.setTop(SetMenu());
+		bPane.setTop(setMenu());
 		/*Create a new Group*/
 		Group base = new Group();
 		/*Create a new Canvas*/
-		Canvas backdrop = new Canvas(CanvasSize, CanvasSize);
+		Canvas backdrop = new Canvas(canvasSize, canvasSize);
 		/*Set the GraphicsContext to 2D*/
 		gc = backdrop.getGraphicsContext2D();
 		/*Add the Canvas to the base*/
@@ -811,11 +811,11 @@ public class GUI extends Application
 		/*Create a new HBox*/
 		ltPane = new HBox();
 		/*Create the buttons*/
-		CreateButtons(ltPane);
+		createButtons(ltPane);
 		/*Add the HBox to the BorderPane*/
 		bPane.setBottom(ltPane);
 		/*Create the mainScene*/
-		Scene mainScene = new Scene(bPane, CanvasSize * 1.5, CanvasSize * 1.2);
+		Scene mainScene = new Scene(bPane, canvasSize * 1.5, canvasSize * 1.2);
 		/*Set the stage's scene to the mainScene*/
 		mainStage.setScene(mainScene);
 		/*Show the window*/
