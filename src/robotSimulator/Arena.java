@@ -118,7 +118,7 @@ public class Arena implements Serializable
 	public boolean Add(ArenaObject O)
 	{
 		/*Temporary variable and object declaration*/
-		int TempX = 0, TempY = 0;
+		int TempX = 0, TempY = 0, Possible = 0;
 		Random TempR = new Random();
 		/*If there is still space in the arena*/
 		if(Contents.size() < MaxCapacity)
@@ -126,11 +126,16 @@ public class Arena implements Serializable
 			/*Do at least once*/
 			do
 			{
+				if(Possible > 1000)
+				{
+					return false;
+				}
 				/*Generate and set random X and Y positions*/
 				TempX = TempR.nextInt(this.Width - 20);
 				TempY = TempR.nextInt(this.Length - 20);
 				O.SetXPosition(TempX);
 				O.SetYPosition(TempY);
+				Possible++;
 			/*While the object cannot be placed*/
 			}while (Check(TempX, TempY, O));
 			/*Add object to Contents*/
