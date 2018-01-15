@@ -110,22 +110,22 @@ public class WhiskerRobot extends BasicRobot
 	public boolean rWhiskerCheck()
 	{
 		/*For all objects in the Arena*/
-		for(int ct = 0; ct < getArena().Contents.size(); ct++)
+		for(int ct = 0; ct < getArena().contents.size(); ct++)
 		{
 			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
-			if((getArena().Contents.get(ct).getID() == this.getID()) || getArena().Contents.get(ct) instanceof LightSource && !(getArena().Contents.get(ct) instanceof ObstacleBlock))
+			if((getArena().contents.get(ct).getID() == this.getID()) || getArena().contents.get(ct) instanceof LightSource && !(getArena().contents.get(ct) instanceof ObstacleBlock))
 			{
 				/*Just move to the next object*/
 				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
-			else if(rWhisker.GetCoords()[2] < 0 || rWhisker.GetCoords()[3] < 0|| rWhisker.GetCoords()[2] > getArena().GetWidth()|| rWhisker.GetCoords()[3] > getArena().GetLength())
+			else if(rWhisker.GetCoords()[2] < 0 || rWhisker.GetCoords()[3] < 0|| rWhisker.GetCoords()[2] > getArena().getWidth()|| rWhisker.GetCoords()[3] > getArena().getLength())
 			{
 				/*Return true*/
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(rWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
+			else if(rWhisker.distanceFrom(getArena().contents.get(ct).getXPosition(), getArena().contents.get(ct).getYPosition()) <= getArena().contents.get(ct).getSize())
 			{
 				/*Return true*/
 				return true;
@@ -145,22 +145,22 @@ public class WhiskerRobot extends BasicRobot
 	public boolean lWhiskerCheck()
 	{
 		/*For all objects in the Arena*/
-		for(int ct = 0; ct < getArena().Contents.size(); ct++)
+		for(int ct = 0; ct < getArena().contents.size(); ct++)
 		{
 			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
-			if((getArena().Contents.get(ct).getID() == this.getID()) || (getArena().Contents.get(ct) instanceof LightSource && !(getArena().Contents.get(ct) instanceof ObstacleBlock)))
+			if((getArena().contents.get(ct).getID() == this.getID()) || (getArena().contents.get(ct) instanceof LightSource && !(getArena().contents.get(ct) instanceof ObstacleBlock)))
 			{
 				/*Just move to the next object*/
 				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
-			else if(lWhisker.GetCoords()[2] < 0 || lWhisker.GetCoords()[3] < 0 || lWhisker.GetCoords()[2] > getArena().GetWidth() || lWhisker.GetCoords()[3] > getArena().GetLength())
+			else if(lWhisker.GetCoords()[2] < 0 || lWhisker.GetCoords()[3] < 0 || lWhisker.GetCoords()[2] > getArena().getWidth() || lWhisker.GetCoords()[3] > getArena().getLength())
 			{
 				/*Return true*/
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(lWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
+			else if(lWhisker.distanceFrom(getArena().contents.get(ct).getXPosition(), getArena().contents.get(ct).getYPosition()) <= getArena().contents.get(ct).getSize())
 			{
 				/*Return true*/
 				return true;

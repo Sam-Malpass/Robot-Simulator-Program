@@ -39,7 +39,7 @@ public class LightRobot extends BasicRobot
 	public boolean lightSensor(int X, int Y, ArenaObject O)
 	{
 		/*If object is outside the walls of the Arena*/
-		if(X < O.getSize() || Y < O.getSize() || X > getArena().GetWidth()-O.getSize() || Y > getArena().GetLength()-O.getSize())
+		if(X < O.getSize() || Y < O.getSize() || X > getArena().getWidth()-O.getSize() || Y > getArena().getLength()-O.getSize())
 		{
 			/*Returns true*/
 			return true;
@@ -48,12 +48,12 @@ public class LightRobot extends BasicRobot
 		else
 		{
 			/*For all objects in the Arena*/
-			for(int ct = 0; ct < getArena().Contents.size(); ct++)
+			for(int ct = 0; ct < getArena().contents.size(); ct++)
 			{
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
-				Line Checker = new Line(X, Y, getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition());
+				Line Checker = new Line(X, Y, getArena().contents.get(ct).getXPosition(), getArena().contents.get(ct).getYPosition());
 				/*Check if line length is less than the size of the two objects and greater than 1*/
-				if(Checker.lineLength() < O.getSize() + getArena().Contents.get(ct).getSize() && Checker.lineLength() > 1)
+				if(Checker.lineLength() < O.getSize() + getArena().contents.get(ct).getSize() && Checker.lineLength() > 1)
 				{
 					return true;
 				}

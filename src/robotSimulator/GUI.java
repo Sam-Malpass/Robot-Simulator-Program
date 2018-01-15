@@ -132,19 +132,19 @@ public class GUI extends Application
 		/*Set colour to DARKGRAY*/
 		gc.setFill(Color.DARKGRAY);
 		/*Fill a rectangle of given size*/
-		gc.fillRect(0, 0, Arena.GetWidth(), Arena.GetLength());
+		gc.fillRect(0, 0, Arena.getWidth(), Arena.getLength());
 		/*Set colour to BLACK*/
 		gc.setFill(Color.BLACK);
 		/*Set line width to 1*/
 		gc.setLineWidth(1);
 		/*Draw the top wall*/
-		gc.strokeLine(0,0,Arena.GetWidth(),0);
+		gc.strokeLine(0,0,Arena.getWidth(),0);
 		/*Draw the right wall*/
-		gc.strokeLine(Arena.GetWidth(),0, Arena.GetWidth(), Arena.GetLength());
+		gc.strokeLine(Arena.getWidth(),0, Arena.getWidth(), Arena.getLength());
 		/*Draw the bottom wall*/
-		gc.strokeLine(Arena.GetWidth(), Arena.GetLength(), 0, Arena.GetLength());
+		gc.strokeLine(Arena.getWidth(), Arena.getLength(), 0, Arena.getLength());
 		/*Draw the left wall*/
-		gc.strokeLine(0, Arena.GetLength(), 0, 0);
+		gc.strokeLine(0, Arena.getLength(), 0, 0);
 	}
 	/**
 	 * Function definition for DrawWhiskerRobot()
@@ -153,13 +153,13 @@ public class GUI extends Application
 	 */
 	public void DrawWhiskerRobot()
 	{
-		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		for (int ct = 0; ct < Arena.contents.size(); ct++)
 		{
-			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
-			if(Arena.Contents.get(ct) instanceof WhiskerRobot)
+			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
+			if(Arena.contents.get(ct) instanceof WhiskerRobot)
 			{
 				/*Create a temporary WhiskerRobot by casting the current object*/
-				WhiskerRobot B = (WhiskerRobot) Arena.Contents.get(ct);
+				WhiskerRobot B = (WhiskerRobot) Arena.contents.get(ct);
 				/*Set colour to RED*/
 				gc.setFill(Color.RED);
 				/*Draw a circle to represent the body*/
@@ -225,15 +225,15 @@ public class GUI extends Application
 	public void DrawLightRobot()
 	{
 		/*For all objects in the Arena*/
-		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		for (int ct = 0; ct < Arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
-			if(Arena.Contents.get(ct) instanceof LightRobot)
+			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
+			if(Arena.contents.get(ct) instanceof LightRobot)
 			{
 				gc.setStroke(Color.BLACK);
 				/*Create a LightRobot by casting the current object*/
-				LightRobot B = (LightRobot) Arena.Contents.get(ct);
+				LightRobot B = (LightRobot) Arena.contents.get(ct);
 				/*Set colour to PURPLE*/
 				gc.setFill(Color.PURPLE);
 				/*Draw a circle to represent the robot's body*/
@@ -304,15 +304,15 @@ public class GUI extends Application
 	public void DrawBasicRobot()
 	{
 		/*For all objects in the Arena*/
-		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		for (int ct = 0; ct < Arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
+			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
 			/*If the object is a BasicRobot*/
-			if(Arena.Contents.get(ct) instanceof BasicRobot && !(Arena.Contents.get(ct) instanceof WhiskerRobot) && !(Arena.Contents.get(ct) instanceof LightRobot))
+			if(Arena.contents.get(ct) instanceof BasicRobot && !(Arena.contents.get(ct) instanceof WhiskerRobot) && !(Arena.contents.get(ct) instanceof LightRobot))
 			{
 				/*Create a BasicRobot by casting the current object*/
-				BasicRobot B = (BasicRobot) Arena.Contents.get(ct);
+				BasicRobot B = (BasicRobot) Arena.contents.get(ct);
 				/*Set colour to GREEN*/
 				gc.setFill(Color.GREEN);
 				/*Draw a circle to represent the robot's body*/
@@ -344,12 +344,12 @@ public class GUI extends Application
 	public void DrawLightSource()
 	{
 		/*For all objects in the Arena*/
-		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		for (int ct = 0; ct < Arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
+			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
 			/*If the object is a LightSource*/
-			if(Arena.Contents.get(ct) instanceof LightSource)
+			if(Arena.contents.get(ct) instanceof LightSource)
 			{
 				/*Set colour to YELLOW*/
 				gc.setFill(Color.rgb(255, 255, 0, 0.5));
@@ -365,12 +365,12 @@ public class GUI extends Application
 	 */
 	public void DrawObstacleBlock()
 	{
-		for (int ct = 0; ct < Arena.Contents.size(); ct++)
+		for (int ct = 0; ct < Arena.contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
+			int S = Arena.contents.get(ct).getSize(), X = Arena.contents.get(ct).getXPosition(), Y = Arena.contents.get(ct).getYPosition();
 			/*If the object is an ObstacleBlock*/
-			if(Arena.Contents.get(ct) instanceof ObstacleBlock)
+			if(Arena.contents.get(ct) instanceof ObstacleBlock)
 			{
 				/*Set colour to BLACK*/
 				gc.setFill(Color.BLACK);
@@ -403,7 +403,7 @@ public class GUI extends Application
 		/*Clear the rtPane*/
 		rtPane.getChildren().clear();
 		/*Create a new Label using the result of ListContents()*/
-		Label l = new Label(Arena.ListContents());
+		Label l = new Label(Arena.listContents());
 		/*Add the Label to rtPane*/
 		rtPane.getChildren().add(l);
 	}
@@ -588,7 +588,7 @@ public class GUI extends Application
 		    	if(Active == true)
 		    	{
 		    		/*If the robot is added successfully*/
-		    		if(Arena.AddBasicRobot() == true)
+		    		if(Arena.addBasicRobot() == true)
 		    		{
 		    			/*Send a success alert*/
 		    			AlertWindow("Success", "Robot Added Successfully");
@@ -623,7 +623,7 @@ public class GUI extends Application
 			    if(Active == true)
 			    {
 			    	/*If the robot is created successfully*/
-			    	if(Arena.AddWhiskerRobot() == true)
+			    	if(Arena.addWhiskerRobot() == true)
 			    	{
 			    		/*Send out a success alert*/
 			    		AlertWindow("Success", "Robot Added Successfully");
@@ -658,7 +658,7 @@ public class GUI extends Application
 			    if(Active == true)
 			    {
 			    	/*If the robot is created successfully*/
-			    	if(Arena.AddLightRobot() == true)
+			    	if(Arena.addLightRobot() == true)
 			    	{
 			    		/*Send out a success alert*/
 			    		AlertWindow("Success", "Robot Added Successfully");
@@ -693,7 +693,7 @@ public class GUI extends Application
 				if(Active == true)
 		    	{
 					/*If the LightSource is added successfully*/
-		    		if(Arena.AddLightSource() == true)
+		    		if(Arena.addLightSource() == true)
 		    		{
 		    			/*Send out a success alert*/
 		    			AlertWindow("Success", "Light Source Added Successfully");
@@ -728,7 +728,7 @@ public class GUI extends Application
 				if(Active == true)
 		    	{
 					/*If the ObstacleBlock is created successfully*/
-		    		if(Arena.AddObstacleBlock() == true)
+		    		if(Arena.addObstacleBlock() == true)
 		    		{
 		    			/*Send out a success alert*/
 		    			AlertWindow("Success", "Obstacle Added Successfully");
@@ -758,7 +758,7 @@ public class GUI extends Application
 			public void handle(ActionEvent event) 
 			{
 				/*Clear every object out of the Arena*/
-				Arena.ClearAll();
+				Arena.clearAll();
 				/*Draw everything*/
 				DrawAll();
 			}
@@ -782,8 +782,8 @@ public class GUI extends Application
 		public void handle(long currentNanoTime) 
 		{
 			/*Call Simulate()*/
-			Arena.Simulate();
-			Arena.Simulate();
+			Arena.simulate();
+			Arena.simulate();
 			/*Draw everything*/
 			DrawAll();
 		}

@@ -16,21 +16,21 @@ public class Arena implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * Width holds the current width of the object.
+	 * width holds the current width of the object.
 	 */
-	private int Width;
+	private int width;
 	/**
-	 * Length holds the current length of the object.
+	 * length holds the current length of the object.
 	 */
-	private int Length;
+	private int length;
 	/**
-	 * MaxCapacity holds the maximum capacity of the object.
+	 * maxCapacity holds the maximum capacity of the object.
 	 */
-	private int MaxCapacity;
+	private int maxCapacity;
 	/**
-	 * Contents holds the current contents of the object.
+	 * contents holds the current contents of the object.
 	 */
-	protected ArrayList<ArenaObject> Contents;
+	protected ArrayList<ArenaObject> contents;
 	/**
 	 * Constructor with no arguments.
 	 * <p>
@@ -40,14 +40,14 @@ public class Arena implements Serializable
 	 */
 	Arena()
 	{
-		/*Sets Width*/
-		SetWidth(500);
-		/*Sets Length*/
-		SetLength(500);
-		/*Sets MaxCapacity*/
-		MaxCapacity = 25;
-		/*Sets Contents*/
-		Contents = new ArrayList<ArenaObject>();
+		/*Sets width*/
+		setWidth(500);
+		/*Sets length*/
+		setLength(500);
+		/*Sets maxCapacity*/
+		maxCapacity = 25;
+		/*Sets contents*/
+		contents = new ArrayList<ArenaObject>();
 	}
 	/**
 	 * Constructor with arguments.
@@ -55,20 +55,20 @@ public class Arena implements Serializable
 	 * Constructs an Arena object using values passed to the 
 	 * constructor.
 	 * <p>
-	 * @param W is used to set the Width
-	 * @param L is used to set the Length
-	 * @param C is used to set the MaxCapacity
+	 * @param W is used to set the width
+	 * @param L is used to set the length
+	 * @param C is used to set the maxCapacity
 	 */
 	Arena(int W, int L, int C)
 	{
-		/*Sets Width to W*/
-		SetWidth(W);
-		/*Sets Length to L*/
-		SetLength(L);
-		/*Sets MaxCapacity to C*/
-		MaxCapacity = C;
-		/*Sets Contents*/
-		Contents = new ArrayList<ArenaObject>();
+		/*Sets width to W*/
+		setWidth(W);
+		/*Sets length to L*/
+		setLength(L);
+		/*Sets maxCapacity to C*/
+		maxCapacity = C;
+		/*Sets contents*/
+		contents = new ArrayList<ArenaObject>();
 	}
 	/**
 	 * Function definition for Check()
@@ -80,10 +80,10 @@ public class Arena implements Serializable
 	 * @param O is the object to be tested against
 	 * @return true if checks fail or false if all tests succeed
 	 */
-	public boolean Check(int X, int Y, ArenaObject O)
+	public boolean check(int X, int Y, ArenaObject O)
 	{
 		/*If object is outside the walls of the Arena*/
-		if(X < O.getSize() || Y < O.getSize() || X > GetWidth()-O.getSize() || Y >GetLength()-O.getSize())
+		if(X < O.getSize() || Y < O.getSize() || X > getWidth()-O.getSize() || Y >getLength()-O.getSize())
 		{
 			/*Returns true*/
 			return true;
@@ -92,12 +92,12 @@ public class Arena implements Serializable
 		else
 		{
 			/*For all objects in the Arena*/
-			for(int ct = 0; ct < Contents.size(); ct++)
+			for(int ct = 0; ct < contents.size(); ct++)
 			{
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
-				Line Checker = new Line(X, Y, Contents.get(ct).getXPosition(), Contents.get(ct).getYPosition());
+				Line Checker = new Line(X, Y, contents.get(ct).getXPosition(), contents.get(ct).getYPosition());
 				/*Check if line length is less than the size of the two objects and greater than 1*/
-				if(Checker.lineLength() < O.getSize() + Contents.get(ct).getSize() && Checker.lineLength() >= 1)
+				if(Checker.lineLength() < O.getSize() + contents.get(ct).getSize() && Checker.lineLength() >= 1)
 				{
 					/*Return True*/
 					return true;
@@ -115,13 +115,13 @@ public class Arena implements Serializable
 	 * <p>
 	 * @return true if robot is created or false if not
 	 */
-	public boolean Add(ArenaObject O)
+	public boolean add(ArenaObject O)
 	{
 		/*Temporary variable and object declaration*/
 		int TempX = 0, TempY = 0, Possible = 0;
 		Random TempR = new Random();
 		/*If there is still space in the arena*/
-		if(Contents.size() < MaxCapacity)
+		if(contents.size() < maxCapacity)
 		{
 			/*Do at least once*/
 			do
@@ -131,15 +131,15 @@ public class Arena implements Serializable
 					return false;
 				}
 				/*Generate and set random X and Y positions*/
-				TempX = TempR.nextInt(this.Width - 20);
-				TempY = TempR.nextInt(this.Length - 20);
+				TempX = TempR.nextInt(this.width - 20);
+				TempY = TempR.nextInt(this.length - 20);
 				O.setXPosition(TempX);
 				O.setYPosition(TempY);
 				Possible++;
 			/*While the object cannot be placed*/
-			}while (Check(TempX, TempY, O));
-			/*Add object to Contents*/
-			Contents.add(O);
+			}while (check(TempX, TempY, O));
+			/*Add object to contents*/
+			contents.add(O);
 			/*Return true*/
 			return true;
 		}
@@ -157,12 +157,12 @@ public class Arena implements Serializable
 	 * <p>
 	 * @return true if robot is created or false if not
 	 */
-	public boolean AddBasicRobot()
+	public boolean addBasicRobot()
 	{
 		/*Creates object R of type BasicRobot*/
 		BasicRobot R = new BasicRobot(0, 0, this);
 		/*Return the result of Add(R)*/
-		return Add(R);
+		return add(R);
 	}
 	/**
 	 * Function definition for AddWhiskerRobot()
@@ -171,12 +171,12 @@ public class Arena implements Serializable
 	 * <p>
 	 * @return true if robot is created or false if not
 	 */
-	public boolean AddWhiskerRobot()
+	public boolean addWhiskerRobot()
 	{
 		/*Creates object R of type WhiskerRobot*/
 		WhiskerRobot R = new WhiskerRobot(0, 0, this);
 		/*Return the result of Add(R)*/
-		return Add(R);
+		return add(R);
 	}
 	/**
 	 * Function definition for AddLightRobot()
@@ -185,12 +185,12 @@ public class Arena implements Serializable
 	 * <p>
 	 * @return true if robot is created or false if not
 	 */
-	public boolean AddLightRobot()
+	public boolean addLightRobot()
 	{
 		/*Creates object R of type LightRobot*/
 		LightRobot R = new LightRobot(0, 0, this);
 		/*Return the result of Add(R)*/
-		return Add(R);
+		return add(R);
 	}
 	/**
 	 * Function definition for AddLightSource()
@@ -199,12 +199,12 @@ public class Arena implements Serializable
 	 * <p>
 	 * @return true if object is created or false if not
 	 */
-	public boolean AddLightSource()
+	public boolean addLightSource()
 	{
 		/*Creates object R of type LightSource*/
 		LightSource R = new LightSource(0, 0, this);
 		/*Return the result of Add(R)*/
-		return Add(R);
+		return add(R);
 	}
 	/**
 	 * Function definition for AddObstacleBlock()
@@ -213,12 +213,12 @@ public class Arena implements Serializable
 	 * <p>
 	 * @return true if object is created or false if not
 	 */
-	public boolean AddObstacleBlock()
+	public boolean addObstacleBlock()
 	{
 		/*Creates object R of type ObstacleBlock*/
 		ObstacleBlock R = new ObstacleBlock(0, 0, this);
 		/*Return the result of Add(R)*/
-		return Add(R);
+		return add(R);
 	}
 	/**
 	 * Function definition for ListContents()
@@ -228,30 +228,30 @@ public class Arena implements Serializable
 	 * <p>
 	 * @return s which is the string builder
 	 */
-	public String ListContents()
+	public String listContents()
 	{
 		/*Declare a String to act as a string builder*/
 		String s = "";
 		/*For all objects in the arena*/
-		for(int ct = 0; ct < Contents.size(); ct++)
+		for(int ct = 0; ct < contents.size(); ct++)
 		{
 			/*If the object is a LightSource*/
-			if(Contents.get(ct) instanceof LightSource)
+			if(contents.get(ct) instanceof LightSource)
 			{
 				/*Add the LightSource's data to the string builder s*/
-				s += "Light: " + Contents.get(ct).getID() + "  X:" + Contents.get(ct).getXPosition() + "  Y:" + Contents.get(ct).getYPosition() + "\n";	
+				s += "Light: " + contents.get(ct).getID() + "  X:" + contents.get(ct).getXPosition() + "  Y:" + contents.get(ct).getYPosition() + "\n";	
 			}
 			/*If the object is an ObstacleBlock*/
-			else if(Contents.get(ct) instanceof ObstacleBlock)
+			else if(contents.get(ct) instanceof ObstacleBlock)
 			{
 				/*Add the ObstacleBlock's data to the string builder s*/
-				s += "Obstacle: " + Contents.get(ct).getID() + "  X:" + Contents.get(ct).getXPosition() + "  Y:" + Contents.get(ct).getYPosition() + "\n";
+				s += "Obstacle: " + contents.get(ct).getID() + "  X:" + contents.get(ct).getXPosition() + "  Y:" + contents.get(ct).getYPosition() + "\n";
 			}
 			/*Otherwise the object must a robot*/
 			else
 			{
 				/*Add the Robot's data to the string builder s*/
-				s += "Robot: " + Contents.get(ct).getID() + "  X:" + Contents.get(ct).getXPosition() + "  Y:" + Contents.get(ct).getYPosition() + "\n";
+				s += "Robot: " + contents.get(ct).getID() + "  X:" + contents.get(ct).getXPosition() + "  Y:" + contents.get(ct).getYPosition() + "\n";
 			}
 		}
 		/*Return s*/
@@ -262,10 +262,10 @@ public class Arena implements Serializable
 	 * <p>
 	 * Handles resetting the IDCalculator and clearing the arena of objects.
 	 */
-	public void ClearAll()
+	public void clearAll()
 	{
-		/*Clear the ArrayList Contents*/
-		Contents.clear();
+		/*Clear the ArrayList contents*/
+		contents.clear();
 		/*Set the IDCalculator to 0*/
 		ArenaObject.resetIDCalculator();
 	}
@@ -274,61 +274,61 @@ public class Arena implements Serializable
 	 * <p>
 	 * For all objects within the arena, attempt a movement.
 	 */
-	public void Simulate()
+	public void simulate()
 	{
 		/*For all objects in the arena*/
-		for(int ct = 0; ct < Contents.size(); ct++)
+		for(int ct = 0; ct < contents.size(); ct++)
 		{
 			/*Attempt a movement*/
-			Contents.get(ct).attemptMove();
+			contents.get(ct).attemptMove();
 		}
 	}
 	/**
 	 * Function definition for GetWidth()
 	 * <p>
-	 * Handles retrieving an object's Width.
+	 * Handles retrieving an object's width.
 	 * <p>
 	 * @return this.Width
 	 */
-	public int GetWidth() 
+	public int getWidth() 
 	{
-		/*Return Width*/
-		return Width;
+		/*Return width*/
+		return width;
 	}
 	/**
 	 * Function definition for GetLength()
 	 * <p>
-	 * Handles retrieving an object's Length.
+	 * Handles retrieving an object's length.
 	 * <p>
 	 * @return this.Length
 	 */
-	public int GetLength() 
+	public int getLength() 
 	{
-		/*Return Length*/
-		return Length;
+		/*Return length*/
+		return length;
 	}
 	/**
 	 * Function definition for SetWidth()
 	 * <p>
-	 * Handles setting an object's Width.
+	 * Handles setting an object's width.
 	 * <p>
 	 * @return this.Width
 	 */
-	public void SetWidth(int W) 
+	public void setWidth(int W) 
 	{
-		/*Sets Width to W*/
-		Width = W;
+		/*Sets width to W*/
+		width = W;
 	}
 	/**
 	 * Function definition for SetLength()
 	 * <p>
-	 * Handles setting an object's Length.
+	 * Handles setting an object's length.
 	 * <p>
 	 * @return this.Length
 	 */
-	public void SetLength(int L) 
+	public void setLength(int L) 
 	{
-		/*Sets Length to L*/
-		Length = L;
+		/*Sets length to L*/
+		length = L;
 	}
 }
