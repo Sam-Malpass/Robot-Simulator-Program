@@ -36,7 +36,7 @@ public class LightRobot extends BasicRobot
 	 * @param Y is the Y coordinate to be tested
 	 * @param O is the object to be tested
 	 */
-	public boolean LightSensor(int X, int Y, ArenaObject O)
+	public boolean lightSensor(int X, int Y, ArenaObject O)
 	{
 		/*If object is outside the walls of the Arena*/
 		if(X < O.getSize() || Y < O.getSize() || X > getArena().GetWidth()-O.getSize() || Y > getArena().GetLength()-O.getSize())
@@ -86,7 +86,7 @@ public class LightRobot extends BasicRobot
 		int Coordinate[] = directionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*If move is not possible*/
-		if(LightSensor(TempX, TempY, this) == true)
+		if(lightSensor(TempX, TempY, this) == true)
 		{
 			/*Set DirectionChangeFlag to true*/
 			getDirectionChangeFlag(true);
