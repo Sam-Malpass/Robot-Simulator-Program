@@ -64,7 +64,7 @@ public class WhiskerRobot extends BasicRobot
 		if(bumpSensor(TempX, TempY, this) == true || (rWhiskerCheck() == true && lWhiskerCheck() == true))
 		{
 			/*Set DirectionChangeFlag to true*/
-			setDirection(getDirection().OppDirection());
+			setDirection(getDirection().oppositeDirection());
 			/*Toggle the DirectionChangeFlag off*/
 			getDirectionChangeFlag(false);
 		}
@@ -72,7 +72,7 @@ public class WhiskerRobot extends BasicRobot
 		else if(rWhiskerCheck() == true)
 		{
 			/*Change direction to the next direction*/
-			setDirection(getDirection().NextDirection());
+			setDirection(getDirection().nextDirection());
 			/*Re-create the whiskers*/
 			rWhisker = rWhiskerHandler();
 			lWhisker = lWhiskerHandler();
@@ -83,7 +83,7 @@ public class WhiskerRobot extends BasicRobot
 		else if(lWhiskerCheck() == true)
 		{
 			/*Change the direction to the previous direction*/
-			setDirection(getDirection().PrevDirection());
+			setDirection(getDirection().previousDirection());
 			/*Re-create the whiskers*/
 			rWhisker = rWhiskerHandler();
 			lWhisker = lWhiskerHandler();

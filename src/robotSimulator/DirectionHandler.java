@@ -23,7 +23,7 @@ public enum DirectionHandler
 	 * <p>
 	 * @return a random direction
 	 */
-	public static DirectionHandler RandomDirection()
+	public static DirectionHandler randomDirection()
 	{
 		/*Creates object R of type Random*/
 		Random R = new Random();
@@ -37,7 +37,7 @@ public enum DirectionHandler
 	 * <p>
 	 * @return the next direction in the enumerator
 	 */
-	public DirectionHandler  NextDirection()
+	public DirectionHandler  nextDirection()
 	{
 		/*Return the next direction in the enumerator*/
 		return values()[(this.ordinal() + 1) % values().length];
@@ -49,7 +49,7 @@ public enum DirectionHandler
 	 * <p>
 	 * @return the previous direction in the enumerator
 	 */
-	public DirectionHandler PrevDirection()
+	public DirectionHandler previousDirection()
 	{
 		/*Return the previous direction in the enumerator*/
 		return values()[(this.ordinal() + 3) % values().length];
@@ -61,7 +61,7 @@ public enum DirectionHandler
 	 * <p>
 	 * @return the opposite direction in the enumerator
 	 */
-	public DirectionHandler OppDirection()
+	public DirectionHandler oppositeDirection()
 	{
 		/*Return the opposite direction in the enumerator*/
 		return values()[(this.ordinal() + 2) % values().length];

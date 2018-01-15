@@ -62,7 +62,7 @@ public class BasicRobot extends ArenaObject
 		/*Sets Arena to A*/
 		this.setArena(A);
 		/*Sets direction to a random direction*/
-		this.setDirection(DirectionHandler.RandomDirection());
+		this.setDirection(DirectionHandler.randomDirection());
 	}
 	/**
 	 * Function definition for DirectionDeterminator()
@@ -79,7 +79,7 @@ public class BasicRobot extends ArenaObject
 		if(this.getDirectionChangeFlag() == true)
 		{
 			/*Set direction to the next direction in the enumerator*/
-			this.direction = direction.NextDirection();
+			this.direction = direction.nextDirection();
 			/*Set the directionChangeFlag to false*/
 			this.getDirectionChangeFlag(false);
 		}
