@@ -116,7 +116,7 @@ public class WhiskerRobot extends BasicRobot
 			if((GetArena().Contents.get(ct).GetID() == this.GetID()) || GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock))
 			{
 				/*Just move to the next object*/
-				ct++;
+				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
 			else if(RWhisker.GetCoords()[2] < 0 || RWhisker.GetCoords()[3] < 0|| RWhisker.GetCoords()[2] > GetArena().GetWidth()|| RWhisker.GetCoords()[3] > GetArena().GetLength())
@@ -151,7 +151,7 @@ public class WhiskerRobot extends BasicRobot
 			if((GetArena().Contents.get(ct).GetID() == this.GetID()) || (GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock)))
 			{
 				/*Just move to the next object*/
-				ct++;
+				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
 			else if(LWhisker.GetCoords()[2] < 0 || LWhisker.GetCoords()[3] < 0 || LWhisker.GetCoords()[2] > GetArena().GetWidth() || LWhisker.GetCoords()[3] > GetArena().GetLength())
