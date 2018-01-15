@@ -8,13 +8,13 @@ package robotSimulator;
 public class BasicRobot extends ArenaObject
 {
 	/**
-	 * DirectionChangeFlag holds whether the robot needs to change direction.
+	 * directionChangeFlag holds whether the robot needs to change direction.
 	 */
-	private boolean DirectionChangeFlag;
+	private boolean directionChangeFlag;
 	/**
-	 * Direction holds the robot's current direction.
+	 * direction holds the robot's current direction.
 	 */
-	private DirectionHandler Direction;
+	private DirectionHandler direction;
 	/**
 	 * Constructor with no arguments.
 	 * <p>
@@ -34,8 +34,8 @@ public class BasicRobot extends ArenaObject
 		this.setSize(20);
 		/*Sets Solid*/
 		this.setSolid(true);
-		/*Sets Direction to a random direction*/
-		this.SetDirection(DirectionHandler.UP);
+		/*Sets direction to a random direction*/
+		this.setDirection(DirectionHandler.UP);
 	}
 	/**
 	 * Constructor with arguments.
@@ -61,30 +61,30 @@ public class BasicRobot extends ArenaObject
 		this.setSolid(true);
 		/*Sets Arena to A*/
 		this.setArena(A);
-		/*Sets Direction to a random direction*/
-		this.SetDirection(DirectionHandler.RandomDirection());
+		/*Sets direction to a random direction*/
+		this.setDirection(DirectionHandler.RandomDirection());
 	}
 	/**
 	 * Function definition for DirectionDeterminator()
 	 * <p>
-	 * Checks whether or not to change the Direction of the robot.
-	 * Determines where the coordinate should be based on the Direction of the robot.
+	 * Checks whether or not to change the direction of the robot.
+	 * Determines where the coordinate should be based on the direction of the robot.
 	 * <p>
-	 * @param TempX  may be changed based on Direction
-	 * @param TempY may be changed based on Direction
+	 * @param TempX  may be changed based on direction
+	 * @param TempY may be changed based on direction
 	 */
-	public int[] DirectionDeterminator(int TempX, int TempY)
+	public int[] directionDeterminator(int TempX, int TempY)
 	{
-		/*If DirectionChangeFlag is true*/
-		if(this.GetDirectionChangeFlag() == true)
+		/*If directionChangeFlag is true*/
+		if(this.getDirectionChangeFlag() == true)
 		{
-			/*Set Direction to the next direction in the enumerator*/
-			this.Direction = Direction.NextDirection();
-			/*Set the DirectionChangeFlag to false*/
-			this.SetDirectionChangeFlag(false);
+			/*Set direction to the next direction in the enumerator*/
+			this.direction = direction.NextDirection();
+			/*Set the directionChangeFlag to false*/
+			this.getDirectionChangeFlag(false);
 		}
-		/*Switch on the Direction*/
-		switch(this.Direction)
+		/*Switch on the direction*/
+		switch(this.direction)
 		{
 		/*If UP*/
 		case UP:
@@ -120,7 +120,7 @@ public class BasicRobot extends ArenaObject
 	 * @param X is used to check the position 
 	 * @param Y is used to check the position
 	 */
-	public boolean BumpSensor(int X, int Y, ArenaObject O)
+	public boolean bumpSensor(int X, int Y, ArenaObject O)
 	{
 		/*If object is outside the walls of the Arena*/
 		if(X < O.getSize() || Y < O.getSize() || X > getArena().GetWidth()-O.getSize() || Y > getArena().GetLength()-O.getSize())
@@ -157,13 +157,13 @@ public class BasicRobot extends ArenaObject
 	public void attemptMove()
 	{
 		/*Create temporary variables using the XPositon and YPosition*/
-		int Coordinate[] = DirectionDeterminator(this.getXPosition(), this.getYPosition());
+		int Coordinate[] = directionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*If move is not possible*/
-		if(BumpSensor(TempX, TempY, this) == true)
+		if(bumpSensor(TempX, TempY, this) == true)
 		{
-			/*Set DirectionChangeFlag to true*/
-			SetDirectionChangeFlag(true);
+			/*Set directionChangeFlag to true*/
+			getDirectionChangeFlag(true);
 		}
 		/*Otherwise*/
 		else
@@ -177,49 +177,49 @@ public class BasicRobot extends ArenaObject
 	/**
 	 * Function definition for GetDirectionChangeFlag()
 	 * <p>
-	 * Handles retrieving an object's DirectionChangeFlag.
+	 * Handles retrieving an object's directionChangeFlag.
 	 * <p>
 	 * @return this.DirectionChangeFlag
 	 */
-	public boolean GetDirectionChangeFlag() 
+	public boolean getDirectionChangeFlag() 
 	{
-		/*Return DirectionChangeFlag*/
-		return this.DirectionChangeFlag;
+		/*Return directionChangeFlag*/
+		return this.directionChangeFlag;
 	}
 	/**
 	 * Function definition for GetDirection()
 	 * <p>
-	 * Handles retrieving an object's Direction.
+	 * Handles retrieving an object's direction.
 	 * <p>
 	 * @return this.Direction
 	 */
-	public DirectionHandler GetDirection()
+	public DirectionHandler getDirection()
 	{
-		/*Return Direction*/
-		return this.Direction;
+		/*Return direction*/
+		return this.direction;
 	}
 	/**
 	 * Function definition for SetDirectionChangeFlag()
 	 * <p>
-	 * Handles Setting an object's DirectionChangeFlag.
+	 * Handles Setting an object's directionChangeFlag.
 	 * <p>
 	 * @return this.DirectionChangeFlag
 	 */
-	public void SetDirectionChangeFlag(boolean DCF)
+	public void getDirectionChangeFlag(boolean DCF)
 	{
-		/*Set DirectionChangeFlag to DCF*/
-		this.DirectionChangeFlag = DCF;
+		/*Set directionChangeFlag to DCF*/
+		this.directionChangeFlag = DCF;
 	}
 	/**
 	 * Function definition for SetDirection()
 	 * <p>
-	 * Handles Setting an object's Direction.
+	 * Handles Setting an object's direction.
 	 * <p>
 	 * @return this.Direction
 	 */
-	public void SetDirection(DirectionHandler D) 
+	public void setDirection(DirectionHandler D) 
 	{
-		/*Set Direction to D*/
-		this.Direction = D;
+		/*Set direction to D*/
+		this.direction = D;
 	}
 }

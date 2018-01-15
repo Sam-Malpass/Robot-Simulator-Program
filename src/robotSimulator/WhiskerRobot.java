@@ -55,40 +55,40 @@ public class WhiskerRobot extends BasicRobot
 	public void attemptMove()
 	{
 		/*Create temporary variables using the XPositon and YPosition*/
-		int Coordinate[] = super.DirectionDeterminator(this.getXPosition(), this.getYPosition());
+		int Coordinate[] = super.directionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*Re-create the whiskers now that the direction may have changed*/
 		RWhisker = RWhiskerHandler();
 		LWhisker = LWhiskerHandler();
 		/*If move is not possible*/
-		if(BumpSensor(TempX, TempY, this) == true || (RWhiskerCheck() == true && LWhiskerCheck() == true))
+		if(bumpSensor(TempX, TempY, this) == true || (RWhiskerCheck() == true && LWhiskerCheck() == true))
 		{
 			/*Set DirectionChangeFlag to true*/
-			SetDirection(GetDirection().OppDirection());
+			setDirection(getDirection().OppDirection());
 			/*Toggle the DirectionChangeFlag off*/
-			SetDirectionChangeFlag(false);
+			getDirectionChangeFlag(false);
 		}
 		/*If the RWhisker detects something*/
 		else if(RWhiskerCheck() == true)
 		{
 			/*Change direction to the next direction*/
-			SetDirection(GetDirection().NextDirection());
+			setDirection(getDirection().NextDirection());
 			/*Re-create the whiskers*/
 			RWhisker = RWhiskerHandler();
 			LWhisker = LWhiskerHandler();
 			/*Toggle the DirectionChangeFlag off*/
-			SetDirectionChangeFlag(false);
+			getDirectionChangeFlag(false);
 		}
 		/*If the LWhisker detects something*/
 		else if(LWhiskerCheck() == true)
 		{
 			/*Change the direction to the previous direction*/
-			SetDirection(GetDirection().PrevDirection());
+			setDirection(getDirection().PrevDirection());
 			/*Re-create the whiskers*/
 			RWhisker = RWhiskerHandler();
 			LWhisker = LWhiskerHandler();
 			/*Toggle the DirectionChangeFlag off*/
-			SetDirectionChangeFlag(false);
+			getDirectionChangeFlag(false);
 		}
 		/*Otherwise*/
 		else
@@ -182,7 +182,7 @@ public class WhiskerRobot extends BasicRobot
 		/*Create object Temp of type Line*/
 		Line Temp = new Line();
 		/*Depending on WhiskerRobot's direction, Re-create the Line*/
-		switch(GetDirection())
+		switch(getDirection())
 		{
 		case UP:
 			Temp = new Line(getXPosition(), getYPosition()-getSize(), getXPosition()+getSize(), getYPosition() - 40);
@@ -213,7 +213,7 @@ public class WhiskerRobot extends BasicRobot
 		/*Create object Temp of type Line*/
 		Line Temp = new Line();
 		/*Depending on WhiskerRobot's direction, Re-create the Line*/
-		switch(GetDirection())
+		switch(getDirection())
 		{
 		case UP:
 			Temp = new Line(getXPosition(), getYPosition()-getSize(), getXPosition()-getSize(), getYPosition() - 40);

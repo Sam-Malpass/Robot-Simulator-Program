@@ -70,10 +70,10 @@ public class LightRobot extends BasicRobot
 	 * @param TempX is passed to the super.DirectionDeterminator()
 	 * @param TempY is passed to the super.DirectionDeterminator();
 	 */
-	public int[] DirectionDeterminator(int TempX, int TempY)
+	public int[] directionDeterminator(int TempX, int TempY)
 	{
 		/*Return the result from the super.DirectionDeterminator using passed values*/
-		return super.DirectionDeterminator(TempX, TempY);
+		return super.directionDeterminator(TempX, TempY);
 	}
 	/**
 	 * Function definition for AttemptMove()
@@ -83,13 +83,13 @@ public class LightRobot extends BasicRobot
 	public void attemptMove()
 	{
 		/*Create temporary variables using the XPositon and YPosition*/
-		int Coordinate[] = DirectionDeterminator(this.getXPosition(), this.getYPosition());
+		int Coordinate[] = directionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*If move is not possible*/
 		if(LightSensor(TempX, TempY, this) == true)
 		{
 			/*Set DirectionChangeFlag to true*/
-			SetDirectionChangeFlag(true);
+			getDirectionChangeFlag(true);
 		}
 		/*Otherwise*/
 		else

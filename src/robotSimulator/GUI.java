@@ -167,7 +167,7 @@ public class GUI extends Application
 				/*Set line width to 5 for the wheels*/
 				gc.setLineWidth(5);
 				/*If the robot's direction is UP*/
-				if(B.GetDirection() == DirectionHandler.UP)
+				if(B.getDirection() == DirectionHandler.UP)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+17,Y+10,X+17,Y-10);
@@ -179,7 +179,7 @@ public class GUI extends Application
 					gc.strokeLine(X, Y-20, X-20, Y-40);
 				}
 				/*If the robot's direction is DOWN*/
-				else if(B.GetDirection() == DirectionHandler.DOWN)
+				else if(B.getDirection() == DirectionHandler.DOWN)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+17,Y+10,X+17,Y-10);
@@ -191,7 +191,7 @@ public class GUI extends Application
 					gc.strokeLine(X, Y+20, X-20, Y+40);
 				}
 				/*If the robot's direction is LEFT*/
-				else if(B.GetDirection() == DirectionHandler.LEFT)
+				else if(B.getDirection() == DirectionHandler.LEFT)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+10,Y+17,X-10,Y+17);
@@ -203,7 +203,7 @@ public class GUI extends Application
 					gc.strokeLine(X-20, Y, X-40, Y-20);
 				}
 				/*If the robot's direction is RIGHT*/
-				else if(B.GetDirection() == DirectionHandler.RIGHT)
+				else if(B.getDirection() == DirectionHandler.RIGHT)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+10,Y+17,X-10,Y+17);
@@ -241,7 +241,7 @@ public class GUI extends Application
 				/*Set line width to 5 for the wheels*/
 				gc.setLineWidth(5);
 				/*If the robot's direction is UP*/
-				if(B.GetDirection() == DirectionHandler.UP)
+				if(B.getDirection() == DirectionHandler.UP)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+17,Y+10,X+17,Y-10);
@@ -254,7 +254,7 @@ public class GUI extends Application
 					gc.strokeLine(X+5, Y-17, X-5, Y-17);
 				}
 				/*If the robot's direction is DOWN*/
-				else if(B.GetDirection() == DirectionHandler.DOWN)
+				else if(B.getDirection() == DirectionHandler.DOWN)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+17,Y+10,X+17,Y-10);
@@ -267,7 +267,7 @@ public class GUI extends Application
 					gc.strokeLine(X+5, Y+17, X-5, Y+17);
 				}
 				/*If the robot's direction is LEFT*/
-				else if(B.GetDirection() == DirectionHandler.LEFT)
+				else if(B.getDirection() == DirectionHandler.LEFT)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+10,Y+17,X-10,Y+17);
@@ -280,7 +280,7 @@ public class GUI extends Application
 					gc.strokeLine(X-17, Y+5, X-17, Y-5);
 				}
 				/*If the robot's direction is RIGHT*/
-				else if(B.GetDirection() == DirectionHandler.RIGHT)
+				else if(B.getDirection() == DirectionHandler.RIGHT)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+10,Y+17,X-10,Y+17);
@@ -320,14 +320,14 @@ public class GUI extends Application
 				/*Set line width to 5 for the wheels*/
 				gc.setLineWidth(5);
 				/*If the robot's direction is UP or DOWN*/
-				if(B.GetDirection() == DirectionHandler.UP || B.GetDirection() == DirectionHandler.DOWN)
+				if(B.getDirection() == DirectionHandler.UP || B.getDirection() == DirectionHandler.DOWN)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+17,Y+10,X+17,Y-10);
 					gc.strokeLine(X-17,Y+10,X-17,Y-10);
 				}
 				/*If the robot's direction is LEFT or RIGHT*/
-				else if(B.GetDirection() == DirectionHandler.LEFT || B.GetDirection() == DirectionHandler.RIGHT)
+				else if(B.getDirection() == DirectionHandler.LEFT || B.getDirection() == DirectionHandler.RIGHT)
 				{
 					/*Draw the wheels*/
 					gc.strokeLine(X+10,Y+17,X-10,Y+17);
