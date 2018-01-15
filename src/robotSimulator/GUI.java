@@ -476,22 +476,22 @@ public class GUI extends Application
 		/*Add all sub-options to the mFile option*/
 		mFile.getItems().addAll(mSave, mLoad, mExit);
 		/*Object creation*/
-		Menu mOptions = new Menu("arena Options");
-		MenuItem mNew = new MenuItem("New arena");
+		Menu mOptions = new Menu("Arena Options");
+		MenuItem mNew = new MenuItem("New Arena");
 		/*Defining the action for the option*/
 		mNew.setOnAction(new EventHandler<ActionEvent>()
 		{
 			public void handle(ActionEvent actionEvent) 
 			{
 				/*Variables are created and assigned values based on information input by the user*/
-		    	int W = getValue("arena Width (Min 41, Max 500)");
-		    	int L = getValue("arena Length (Min 41, Max 500");
+		    	int W = getValue("Arena Width (Min 41, Max 500)");
+		    	int L = getValue("Arena Length (Min 41, Max 500");
 		    	int C = (W * L) / (4*20*20);
 		    	/*If any of the values are less than or equal to 0*/
 		    	if(W <= 40 || L <= 40 || C <= 0)
 		    	{
 		    		/*Send out an error alert*/
-		    		alertWindow("Error", "arena Failed to Create");
+		    		alertWindow("Error", "Arena Failed to Create");
 		    	}
 		    	/*Otherwise*/
 		    	else
@@ -503,7 +503,7 @@ public class GUI extends Application
 		    		/*Draw everything*/
 		    		drawAll();
 		    		/*Send out a success alert*/
-		    		alertWindow("Success", "arena Created Successfully");
+		    		alertWindow("Success", "Arena Created Successfully");
 		    	}
 			}
 		});
@@ -551,9 +551,9 @@ public class GUI extends Application
 	public void createButtons(HBox ltPane)
 	{
 		/*Object creation*/
-		Label l1 = new Label("Animation:");
-		Label l2 = new Label("Add:");
-		Label l3 = new Label("Reset:");
+		Label l1 = new Label("Animation:	");
+		Label l2 = new Label("	Add:	");
+		Label l3 = new Label("	Reset:	");
 		Button startButton = new Button("Start");
 		/*Defining the action for the option*/
 		startButton.setOnAction(new EventHandler<ActionEvent>()
@@ -606,7 +606,7 @@ public class GUI extends Application
 		    	else
 		    	{
 		    		/*Send an error alert*/
-		    		alertWindow("Error", "No arena Open");
+		    		alertWindow("Error", "No Arena Open");
 		    	}
 			}
 		});
@@ -641,7 +641,7 @@ public class GUI extends Application
 			   	else
 			   	{
 			   		/*Send out an error alert*/
-			   		alertWindow("Error", "No arena Open");
+			   		alertWindow("Error", "No Arena Open");
 			   	}
 			}
 		});
@@ -676,7 +676,7 @@ public class GUI extends Application
 			   	else
 			   	{
 			   		/*Send out an error alert*/
-			   		alertWindow("Error", "No arena Open");
+			   		alertWindow("Error", "No Arena Open");
 			   	}
 			}
 		});
@@ -704,14 +704,14 @@ public class GUI extends Application
 		    		else
 		    		{
 		    			/*Send out an error alert*/
-		    			alertWindow("Error", "arena at Capacity");
+		    			alertWindow("Error", "Object failed to add, perhaps arena is full or there is nowhere to put an object at this time");
 		    		}
 		    	}
 				/*Otherwise*/
 		    	else
 		    	{
 		    		/*Send out an error alert*/
-		    		alertWindow("Error", "No arena Open");
+		    		alertWindow("Error", "No Arena Open");
 		    	}
 			}
 		});
@@ -739,14 +739,14 @@ public class GUI extends Application
 		    		else
 		    		{
 		    			/*Send out an error alert*/
-		    			alertWindow("Error", "arena at Capacity");
+		    			alertWindow("Error", "Object failed to add, perhaps arena is full or there is nowhere to put an object at this time");
 		    		}
 		    	}
 				/*Otherwise*/
 		    	else
 		    	{
 		    		/*Send out an error alert*/
-		    		alertWindow("Error", "No arena Open");
+		    		alertWindow("Error", "No Arena Open");
 		    	}
 			}
 		});
@@ -765,7 +765,6 @@ public class GUI extends Application
 		});
 		/*Add all the buttons to the ltPane*/
 		ltPane.getChildren().setAll(l1, startButton, pauseButton, l2, addRobotButton, addWhiskerButton, addLSensorButton, addLightButton, addObstacleButton, l3, addClearButton);
-		ltPane.setSpacing(2);
 	}
 	/**
 	 * Function definition for start()
