@@ -551,9 +551,9 @@ public class GUI extends Application
 	public void createButtons(HBox ltPane)
 	{
 		/*Object creation*/
-		Label l1 = new Label("Animation:	");
-		Label l2 = new Label("	Add:	");
-		Label l3 = new Label("	Reset:	");
+		Label l1 = new Label("Animation:  ");
+		Label l2 = new Label("	Add:  ");
+		Label l3 = new Label("	Reset:  ");
 		Button startButton = new Button("Start");
 		/*Defining the action for the option*/
 		startButton.setOnAction(new EventHandler<ActionEvent>()
