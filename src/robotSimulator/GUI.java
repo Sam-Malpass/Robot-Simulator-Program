@@ -155,7 +155,7 @@ public class GUI extends Application
 	{
 		for (int ct = 0; ct < Arena.Contents.size(); ct++)
 		{
-			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
 			if(Arena.Contents.get(ct) instanceof WhiskerRobot)
 			{
 				/*Create a temporary WhiskerRobot by casting the current object*/
@@ -228,7 +228,7 @@ public class GUI extends Application
 		for (int ct = 0; ct < Arena.Contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
 			if(Arena.Contents.get(ct) instanceof LightRobot)
 			{
 				gc.setStroke(Color.BLACK);
@@ -307,7 +307,7 @@ public class GUI extends Application
 		for (int ct = 0; ct < Arena.Contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
 			/*If the object is a BasicRobot*/
 			if(Arena.Contents.get(ct) instanceof BasicRobot && !(Arena.Contents.get(ct) instanceof WhiskerRobot) && !(Arena.Contents.get(ct) instanceof LightRobot))
 			{
@@ -347,7 +347,7 @@ public class GUI extends Application
 		for (int ct = 0; ct < Arena.Contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
 			/*If the object is a LightSource*/
 			if(Arena.Contents.get(ct) instanceof LightSource)
 			{
@@ -368,7 +368,7 @@ public class GUI extends Application
 		for (int ct = 0; ct < Arena.Contents.size(); ct++)
 		{
 			/*Create some temporary variables NOTE: This was done to make code easier to write/read*/
-			int S = Arena.Contents.get(ct).GetSize(), X = Arena.Contents.get(ct).GetXPosition(), Y = Arena.Contents.get(ct).GetYPosition();
+			int S = Arena.Contents.get(ct).getSize(), X = Arena.Contents.get(ct).getXPosition(), Y = Arena.Contents.get(ct).getYPosition();
 			/*If the object is an ObstacleBlock*/
 			if(Arena.Contents.get(ct) instanceof ObstacleBlock)
 			{

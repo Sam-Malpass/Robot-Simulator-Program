@@ -17,15 +17,15 @@ public class LightSource extends ArenaObject
 	LightSource()
 	{
 		/*Sets ID*/
-		this.SetID(IDCalculation());
+		this.setID(calculateID());
 		/*Sets XPosition*/
-		this.SetXPosition(20);
+		this.setXPosition(20);
 		/*Sets YPosition*/
-		this.SetYPosition(20);
+		this.setYPosition(20);
 		/*Sets Size*/
-		this.SetSize(40);
+		this.setSize(40);
 		/*Sets Solid*/
-		this.SetSolid(false);
+		this.setSolid(false);
 	}
 	/**
 	 * Constructor with arguments.
@@ -40,17 +40,17 @@ public class LightSource extends ArenaObject
 	LightSource(int X, int Y, Arena A)
 	{
 		/*Sets ID*/
-		this.SetID(IDCalculation());
+		this.setID(calculateID());
 		/*Sets XPosition to X*/
-		this.SetXPosition(X);
+		this.setXPosition(X);
 		/*Sets YPosition to Y*/
-		this.SetYPosition(Y);
+		this.setYPosition(Y);
 		/*Sets Size*/
-		this.SetSize(40);
+		this.setSize(40);
 		/*Sets Solid*/
-		this.SetSolid(false);
+		this.setSolid(false);
 		/*Sets Arena to A*/
-		this.SetArena(A);
+		this.setArena(A);
 	}
 	/**
 	 * Function definition for AttemptMove()
@@ -59,7 +59,7 @@ public class LightSource extends ArenaObject
 	 * <p>
 	 * @return instantly as the object doesn't move.
 	 */
-	public void AttemptMove()
+	public void attemptMove()
 	{
 		return;
 	}

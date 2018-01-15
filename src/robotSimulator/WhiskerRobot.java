@@ -52,10 +52,10 @@ public class WhiskerRobot extends BasicRobot
 	 * Attempts to move using a mixture of its own whiskers and the bump sensor
 	 * available in the BasicRobot
 	 */
-	public void AttemptMove()
+	public void attemptMove()
 	{
 		/*Create temporary variables using the XPositon and YPosition*/
-		int Coordinate[] = super.DirectionDeterminator(this.GetXPosition(), this.GetYPosition());
+		int Coordinate[] = super.DirectionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*Re-create the whiskers now that the direction may have changed*/
 		RWhisker = RWhiskerHandler();
@@ -94,9 +94,9 @@ public class WhiskerRobot extends BasicRobot
 		else
 		{
 			/*Set XPosition to TempX*/
-			this.SetXPosition(TempX);
+			this.setXPosition(TempX);
 			/*Set YPosition to TempY*/
-			this.SetYPosition(TempY);
+			this.setYPosition(TempY);
 		}
 	}
 	/**
@@ -110,22 +110,22 @@ public class WhiskerRobot extends BasicRobot
 	public boolean RWhiskerCheck()
 	{
 		/*For all objects in the Arena*/
-		for(int ct = 0; ct < GetArena().Contents.size(); ct++)
+		for(int ct = 0; ct < getArena().Contents.size(); ct++)
 		{
 			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
-			if((GetArena().Contents.get(ct).GetID() == this.GetID()) || GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock))
+			if((getArena().Contents.get(ct).getID() == this.getID()) || getArena().Contents.get(ct) instanceof LightSource && !(getArena().Contents.get(ct) instanceof ObstacleBlock))
 			{
 				/*Just move to the next object*/
 				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
-			else if(RWhisker.GetCoords()[2] < 0 || RWhisker.GetCoords()[3] < 0|| RWhisker.GetCoords()[2] > GetArena().GetWidth()|| RWhisker.GetCoords()[3] > GetArena().GetLength())
+			else if(RWhisker.GetCoords()[2] < 0 || RWhisker.GetCoords()[3] < 0|| RWhisker.GetCoords()[2] > getArena().GetWidth()|| RWhisker.GetCoords()[3] > getArena().GetLength())
 			{
 				/*Return true*/
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(RWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) <= GetArena().Contents.get(ct).GetSize())
+			else if(RWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
 			{
 				/*Return true*/
 				return true;
@@ -145,22 +145,22 @@ public class WhiskerRobot extends BasicRobot
 	public boolean LWhiskerCheck()
 	{
 		/*For all objects in the Arena*/
-		for(int ct = 0; ct < GetArena().Contents.size(); ct++)
+		for(int ct = 0; ct < getArena().Contents.size(); ct++)
 		{
 			/*If the object being tested is the current WhiskerRobot or is a LightSource*/
-			if((GetArena().Contents.get(ct).GetID() == this.GetID()) || (GetArena().Contents.get(ct) instanceof LightSource && !(GetArena().Contents.get(ct) instanceof ObstacleBlock)))
+			if((getArena().Contents.get(ct).getID() == this.getID()) || (getArena().Contents.get(ct) instanceof LightSource && !(getArena().Contents.get(ct) instanceof ObstacleBlock)))
 			{
 				/*Just move to the next object*/
 				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
-			else if(LWhisker.GetCoords()[2] < 0 || LWhisker.GetCoords()[3] < 0 || LWhisker.GetCoords()[2] > GetArena().GetWidth() || LWhisker.GetCoords()[3] > GetArena().GetLength())
+			else if(LWhisker.GetCoords()[2] < 0 || LWhisker.GetCoords()[3] < 0 || LWhisker.GetCoords()[2] > getArena().GetWidth() || LWhisker.GetCoords()[3] > getArena().GetLength())
 			{
 				/*Return true*/
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(LWhisker.distanceFrom(GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition()) <= GetArena().Contents.get(ct).GetSize())
+			else if(LWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
 			{
 				/*Return true*/
 				return true;
@@ -185,16 +185,16 @@ public class WhiskerRobot extends BasicRobot
 		switch(GetDirection())
 		{
 		case UP:
-			Temp = new Line(GetXPosition(), GetYPosition()-GetSize(), GetXPosition()+GetSize(), GetYPosition() - 40);
+			Temp = new Line(getXPosition(), getYPosition()-getSize(), getXPosition()+getSize(), getYPosition() - 40);
 			return Temp;
 		case DOWN:
-			Temp = new Line(GetXPosition(), GetYPosition()+GetSize(), GetXPosition()-GetSize(), GetYPosition() + 40);
+			Temp = new Line(getXPosition(), getYPosition()+getSize(), getXPosition()-getSize(), getYPosition() + 40);
 			return Temp;
 		case LEFT:
-			Temp = new Line(GetXPosition()-GetSize(), GetYPosition(), GetXPosition() - 40, GetYPosition() - GetSize());
+			Temp = new Line(getXPosition()-getSize(), getYPosition(), getXPosition() - 40, getYPosition() - getSize());
 			return Temp;
 		case RIGHT:
-			Temp = new Line(GetXPosition()+GetSize(), GetYPosition(), GetXPosition() + 40, GetYPosition() + GetSize());
+			Temp = new Line(getXPosition()+getSize(), getYPosition(), getXPosition() + 40, getYPosition() + getSize());
 			return Temp;
 		}
 		/*Return the Line*/
@@ -216,16 +216,16 @@ public class WhiskerRobot extends BasicRobot
 		switch(GetDirection())
 		{
 		case UP:
-			Temp = new Line(GetXPosition(), GetYPosition()-GetSize(), GetXPosition()-GetSize(), GetYPosition() - 40);
+			Temp = new Line(getXPosition(), getYPosition()-getSize(), getXPosition()-getSize(), getYPosition() - 40);
 			return Temp;
 		case DOWN:
-			Temp = new Line(GetXPosition(), GetYPosition()+GetSize(), GetXPosition()+GetSize(), GetYPosition() + 40);
+			Temp = new Line(getXPosition(), getYPosition()+getSize(), getXPosition()+getSize(), getYPosition() + 40);
 			return Temp;
 		case LEFT:
-			Temp = new Line(GetXPosition()-GetSize(), GetYPosition(), GetXPosition() - 40, GetYPosition() + GetSize());
+			Temp = new Line(getXPosition()-getSize(), getYPosition(), getXPosition() - 40, getYPosition() + getSize());
 			return Temp;
 		case RIGHT:
-			Temp = new Line(GetXPosition()+GetSize(), GetYPosition(), GetXPosition() + 40, GetYPosition() - GetSize());
+			Temp = new Line(getXPosition()+getSize(), getYPosition(), getXPosition() + 40, getYPosition() - getSize());
 			return Temp;
 		}
 		/*Return the Line*/

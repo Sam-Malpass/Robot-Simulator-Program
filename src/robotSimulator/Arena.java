@@ -83,7 +83,7 @@ public class Arena implements Serializable
 	public boolean Check(int X, int Y, ArenaObject O)
 	{
 		/*If object is outside the walls of the Arena*/
-		if(X < O.GetSize() || Y < O.GetSize() || X > GetWidth()-O.GetSize() || Y >GetLength()-O.GetSize())
+		if(X < O.getSize() || Y < O.getSize() || X > GetWidth()-O.getSize() || Y >GetLength()-O.getSize())
 		{
 			/*Returns true*/
 			return true;
@@ -95,9 +95,9 @@ public class Arena implements Serializable
 			for(int ct = 0; ct < Contents.size(); ct++)
 			{
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
-				Line Checker = new Line(X, Y, Contents.get(ct).GetXPosition(), Contents.get(ct).GetYPosition());
+				Line Checker = new Line(X, Y, Contents.get(ct).getXPosition(), Contents.get(ct).getYPosition());
 				/*Check if line length is less than the size of the two objects and greater than 1*/
-				if(Checker.lineLength() < O.GetSize() + Contents.get(ct).GetSize() && Checker.lineLength() >= 1)
+				if(Checker.lineLength() < O.getSize() + Contents.get(ct).getSize() && Checker.lineLength() >= 1)
 				{
 					/*Return True*/
 					return true;
@@ -133,8 +133,8 @@ public class Arena implements Serializable
 				/*Generate and set random X and Y positions*/
 				TempX = TempR.nextInt(this.Width - 20);
 				TempY = TempR.nextInt(this.Length - 20);
-				O.SetXPosition(TempX);
-				O.SetYPosition(TempY);
+				O.setXPosition(TempX);
+				O.setYPosition(TempY);
 				Possible++;
 			/*While the object cannot be placed*/
 			}while (Check(TempX, TempY, O));
@@ -239,19 +239,19 @@ public class Arena implements Serializable
 			if(Contents.get(ct) instanceof LightSource)
 			{
 				/*Add the LightSource's data to the string builder s*/
-				s += "Light: " + Contents.get(ct).GetID() + "  X:" + Contents.get(ct).GetXPosition() + "  Y:" + Contents.get(ct).GetYPosition() + "\n";	
+				s += "Light: " + Contents.get(ct).getID() + "  X:" + Contents.get(ct).getXPosition() + "  Y:" + Contents.get(ct).getYPosition() + "\n";	
 			}
 			/*If the object is an ObstacleBlock*/
 			else if(Contents.get(ct) instanceof ObstacleBlock)
 			{
 				/*Add the ObstacleBlock's data to the string builder s*/
-				s += "Obstacle: " + Contents.get(ct).GetID() + "  X:" + Contents.get(ct).GetXPosition() + "  Y:" + Contents.get(ct).GetYPosition() + "\n";
+				s += "Obstacle: " + Contents.get(ct).getID() + "  X:" + Contents.get(ct).getXPosition() + "  Y:" + Contents.get(ct).getYPosition() + "\n";
 			}
 			/*Otherwise the object must a robot*/
 			else
 			{
 				/*Add the Robot's data to the string builder s*/
-				s += "Robot: " + Contents.get(ct).GetID() + "  X:" + Contents.get(ct).GetXPosition() + "  Y:" + Contents.get(ct).GetYPosition() + "\n";
+				s += "Robot: " + Contents.get(ct).getID() + "  X:" + Contents.get(ct).getXPosition() + "  Y:" + Contents.get(ct).getYPosition() + "\n";
 			}
 		}
 		/*Return s*/
@@ -267,7 +267,7 @@ public class Arena implements Serializable
 		/*Clear the ArrayList Contents*/
 		Contents.clear();
 		/*Set the IDCalculator to 0*/
-		ArenaObject.ResetIDCalculator();
+		ArenaObject.resetIDCalculator();
 	}
 	/**
 	 * Function definition for Simulate()
@@ -280,7 +280,7 @@ public class Arena implements Serializable
 		for(int ct = 0; ct < Contents.size(); ct++)
 		{
 			/*Attempt a movement*/
-			Contents.get(ct).AttemptMove();
+			Contents.get(ct).attemptMove();
 		}
 	}
 	/**

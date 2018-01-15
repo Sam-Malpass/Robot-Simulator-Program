@@ -25,15 +25,15 @@ public class BasicRobot extends ArenaObject
 	BasicRobot()
 	{
 		/*Sets ID*/
-		this.SetID(IDCalculation());
+		this.setID(calculateID());
 		/*Sets XPosition*/
-		this.SetXPosition(20);
+		this.setXPosition(20);
 		/*Sets YPosition*/
-		this.SetYPosition(20);
+		this.setYPosition(20);
 		/*Sets Size*/
-		this.SetSize(20);
+		this.setSize(20);
 		/*Sets Solid*/
-		this.SetSolid(true);
+		this.setSolid(true);
 		/*Sets Direction to a random direction*/
 		this.SetDirection(DirectionHandler.UP);
 	}
@@ -50,17 +50,17 @@ public class BasicRobot extends ArenaObject
 	BasicRobot(int X, int Y, Arena A)
 	{
 		/*Sets ID*/
-		this.SetID(IDCalculation());
+		this.setID(calculateID());
 		/*Sets XPosition to X*/
-		this.SetXPosition(X);
+		this.setXPosition(X);
 		/*Sets YPosition to Y*/
-		this.SetYPosition(Y);
+		this.setYPosition(Y);
 		/*Sets Size*/
-		this.SetSize(20);
+		this.setSize(20);
 		/*Sets Solid*/
-		this.SetSolid(true);
+		this.setSolid(true);
 		/*Sets Arena to A*/
-		this.SetArena(A);
+		this.setArena(A);
 		/*Sets Direction to a random direction*/
 		this.SetDirection(DirectionHandler.RandomDirection());
 	}
@@ -123,7 +123,7 @@ public class BasicRobot extends ArenaObject
 	public boolean BumpSensor(int X, int Y, ArenaObject O)
 	{
 		/*If object is outside the walls of the Arena*/
-		if(X < O.GetSize() || Y < O.GetSize() || X > GetArena().GetWidth()-O.GetSize() || Y > GetArena().GetLength()-O.GetSize())
+		if(X < O.getSize() || Y < O.getSize() || X > getArena().GetWidth()-O.getSize() || Y > getArena().GetLength()-O.getSize())
 		{
 			/*Returns true*/
 			return true;
@@ -132,15 +132,15 @@ public class BasicRobot extends ArenaObject
 		else
 		{
 			/*For all objects in the Arena*/
-			for(int ct = 0; ct < GetArena().Contents.size(); ct++)
+			for(int ct = 0; ct < getArena().Contents.size(); ct++)
 			{
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
-				Line Checker = new Line(X, Y, GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition());
-				if(GetArena().Contents.get(ct) instanceof LightSource)
+				Line Checker = new Line(X, Y, getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition());
+				if(getArena().Contents.get(ct) instanceof LightSource)
 				{
 				}
 				/*Check if line length is less than the size of the two objects and greater than 1*/
-				else if(Checker.lineLength() < O.GetSize() + GetArena().Contents.get(ct).GetSize() && Checker.lineLength() > 1)
+				else if(Checker.lineLength() < O.getSize() + getArena().Contents.get(ct).getSize() && Checker.lineLength() > 1)
 				{
 					return true;
 				}
@@ -154,10 +154,10 @@ public class BasicRobot extends ArenaObject
 	 * <p>
 	 * Handles moving a BasicRobot by an X or Y position.
 	 */
-	public void AttemptMove()
+	public void attemptMove()
 	{
 		/*Create temporary variables using the XPositon and YPosition*/
-		int Coordinate[] = DirectionDeterminator(this.GetXPosition(), this.GetYPosition());
+		int Coordinate[] = DirectionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*If move is not possible*/
 		if(BumpSensor(TempX, TempY, this) == true)
@@ -169,9 +169,9 @@ public class BasicRobot extends ArenaObject
 		else
 		{
 			/*Set XPosition to TempX*/
-			this.SetXPosition(TempX);
+			this.setXPosition(TempX);
 			/*Set YPosition to TempY*/
-			this.SetYPosition(TempY);
+			this.setYPosition(TempY);
 		}
 	}
 	/**

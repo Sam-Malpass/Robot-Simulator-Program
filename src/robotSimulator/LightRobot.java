@@ -39,7 +39,7 @@ public class LightRobot extends BasicRobot
 	public boolean LightSensor(int X, int Y, ArenaObject O)
 	{
 		/*If object is outside the walls of the Arena*/
-		if(X < O.GetSize() || Y < O.GetSize() || X > GetArena().GetWidth()-O.GetSize() || Y > GetArena().GetLength()-O.GetSize())
+		if(X < O.getSize() || Y < O.getSize() || X > getArena().GetWidth()-O.getSize() || Y > getArena().GetLength()-O.getSize())
 		{
 			/*Returns true*/
 			return true;
@@ -48,12 +48,12 @@ public class LightRobot extends BasicRobot
 		else
 		{
 			/*For all objects in the Arena*/
-			for(int ct = 0; ct < GetArena().Contents.size(); ct++)
+			for(int ct = 0; ct < getArena().Contents.size(); ct++)
 			{
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
-				Line Checker = new Line(X, Y, GetArena().Contents.get(ct).GetXPosition(), GetArena().Contents.get(ct).GetYPosition());
+				Line Checker = new Line(X, Y, getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition());
 				/*Check if line length is less than the size of the two objects and greater than 1*/
-				if(Checker.lineLength() < O.GetSize() + GetArena().Contents.get(ct).GetSize() && Checker.lineLength() > 1)
+				if(Checker.lineLength() < O.getSize() + getArena().Contents.get(ct).getSize() && Checker.lineLength() > 1)
 				{
 					return true;
 				}
@@ -80,10 +80,10 @@ public class LightRobot extends BasicRobot
 	 * <p>
 	 * Attempts to move using the LightSensor()
 	 */
-	public void AttemptMove()
+	public void attemptMove()
 	{
 		/*Create temporary variables using the XPositon and YPosition*/
-		int Coordinate[] = DirectionDeterminator(this.GetXPosition(), this.GetYPosition());
+		int Coordinate[] = DirectionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*If move is not possible*/
 		if(LightSensor(TempX, TempY, this) == true)
@@ -95,9 +95,9 @@ public class LightRobot extends BasicRobot
 		else
 		{
 			/*Set XPosition to TempX*/
-			this.SetXPosition(TempX);
+			this.setXPosition(TempX);
 			/*Set YPosition to TempY*/
-			this.SetYPosition(TempY);
+			this.setYPosition(TempY);
 		}
 	}
 }
