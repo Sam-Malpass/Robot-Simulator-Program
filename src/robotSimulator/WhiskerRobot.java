@@ -8,13 +8,13 @@ package robotSimulator;
 public class WhiskerRobot extends BasicRobot
 {
 	/**
-	 * RWhisker is a Line object acting as the right whisker
+	 * rWhisker is a Line object acting as the right whisker
 	 */
-	Line RWhisker;
+	Line rWhisker;
 	/**
-	 * LWhisker is a Line object acting as the left whisker
+	 * lWhisker is a Line object acting as the left whisker
 	 */
-	Line LWhisker;
+	Line lWhisker;
 	/**
 	 * Constructor with no arguments.
 	 * <p>
@@ -25,10 +25,10 @@ public class WhiskerRobot extends BasicRobot
 	{
 		/*Calls the BasicRobot constructor without arguments*/
 		super();
-		/*Creates the RWhisker*/
-		RWhisker = RWhiskerHandler();
-		/*Creates the LWhisker*/
-		LWhisker = LWhiskerHandler();
+		/*Creates the rWhisker*/
+		rWhisker = rWhiskerHandler();
+		/*Creates the lWhisker*/
+		lWhisker = lWhiskerHandler();
 	}
 	/**
 	 * Constructor with arguments.
@@ -41,10 +41,10 @@ public class WhiskerRobot extends BasicRobot
 	{
 		/*Calls the BasicRobot constructor with arguments*/
 		super(X, Y, A);
-		/*Creates the RWhisker*/
-		RWhisker = RWhiskerHandler();
-		/*Creates the LWhisker*/
-		LWhisker = LWhiskerHandler();
+		/*Creates the rWhisker*/
+		rWhisker = rWhiskerHandler();
+		/*Creates the lWhisker*/
+		lWhisker = lWhiskerHandler();
 	}
 	/**
 	 * Function definition for AttemptMove()
@@ -58,35 +58,35 @@ public class WhiskerRobot extends BasicRobot
 		int Coordinate[] = super.directionDeterminator(this.getXPosition(), this.getYPosition());
 		int TempX = Coordinate[0], TempY = Coordinate[1];
 		/*Re-create the whiskers now that the direction may have changed*/
-		RWhisker = RWhiskerHandler();
-		LWhisker = LWhiskerHandler();
+		rWhisker = rWhiskerHandler();
+		lWhisker = lWhiskerHandler();
 		/*If move is not possible*/
-		if(bumpSensor(TempX, TempY, this) == true || (RWhiskerCheck() == true && LWhiskerCheck() == true))
+		if(bumpSensor(TempX, TempY, this) == true || (rWhiskerCheck() == true && lWhiskerCheck() == true))
 		{
 			/*Set DirectionChangeFlag to true*/
 			setDirection(getDirection().OppDirection());
 			/*Toggle the DirectionChangeFlag off*/
 			getDirectionChangeFlag(false);
 		}
-		/*If the RWhisker detects something*/
-		else if(RWhiskerCheck() == true)
+		/*If the rWhisker detects something*/
+		else if(rWhiskerCheck() == true)
 		{
 			/*Change direction to the next direction*/
 			setDirection(getDirection().NextDirection());
 			/*Re-create the whiskers*/
-			RWhisker = RWhiskerHandler();
-			LWhisker = LWhiskerHandler();
+			rWhisker = rWhiskerHandler();
+			lWhisker = lWhiskerHandler();
 			/*Toggle the DirectionChangeFlag off*/
 			getDirectionChangeFlag(false);
 		}
-		/*If the LWhisker detects something*/
-		else if(LWhiskerCheck() == true)
+		/*If the lWhisker detects something*/
+		else if(lWhiskerCheck() == true)
 		{
 			/*Change the direction to the previous direction*/
 			setDirection(getDirection().PrevDirection());
 			/*Re-create the whiskers*/
-			RWhisker = RWhiskerHandler();
-			LWhisker = LWhiskerHandler();
+			rWhisker = rWhiskerHandler();
+			lWhisker = lWhiskerHandler();
 			/*Toggle the DirectionChangeFlag off*/
 			getDirectionChangeFlag(false);
 		}
@@ -107,7 +107,7 @@ public class WhiskerRobot extends BasicRobot
 	 * <p>
 	 * @return the result of all the checks
 	 */
-	public boolean RWhiskerCheck()
+	public boolean rWhiskerCheck()
 	{
 		/*For all objects in the Arena*/
 		for(int ct = 0; ct < getArena().Contents.size(); ct++)
@@ -119,13 +119,13 @@ public class WhiskerRobot extends BasicRobot
 				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
-			else if(RWhisker.GetCoords()[2] < 0 || RWhisker.GetCoords()[3] < 0|| RWhisker.GetCoords()[2] > getArena().GetWidth()|| RWhisker.GetCoords()[3] > getArena().GetLength())
+			else if(rWhisker.GetCoords()[2] < 0 || rWhisker.GetCoords()[3] < 0|| rWhisker.GetCoords()[2] > getArena().GetWidth()|| rWhisker.GetCoords()[3] > getArena().GetLength())
 			{
 				/*Return true*/
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(RWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
+			else if(rWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
 			{
 				/*Return true*/
 				return true;
@@ -142,7 +142,7 @@ public class WhiskerRobot extends BasicRobot
 	 * <p>
 	 * @return the result of all the checks
 	 */
-	public boolean LWhiskerCheck()
+	public boolean lWhiskerCheck()
 	{
 		/*For all objects in the Arena*/
 		for(int ct = 0; ct < getArena().Contents.size(); ct++)
@@ -154,13 +154,13 @@ public class WhiskerRobot extends BasicRobot
 				continue;
 			}
 			/*If the whisker is touching the Arena boundaries*/
-			else if(LWhisker.GetCoords()[2] < 0 || LWhisker.GetCoords()[3] < 0 || LWhisker.GetCoords()[2] > getArena().GetWidth() || LWhisker.GetCoords()[3] > getArena().GetLength())
+			else if(lWhisker.GetCoords()[2] < 0 || lWhisker.GetCoords()[3] < 0 || lWhisker.GetCoords()[2] > getArena().GetWidth() || lWhisker.GetCoords()[3] > getArena().GetLength())
 			{
 				/*Return true*/
 				return true;
 			}
 			/*If the whisker is touching a solid object*/
-			else if(LWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
+			else if(lWhisker.distanceFrom(getArena().Contents.get(ct).getXPosition(), getArena().Contents.get(ct).getYPosition()) <= getArena().Contents.get(ct).getSize())
 			{
 				/*Return true*/
 				return true;
@@ -177,7 +177,7 @@ public class WhiskerRobot extends BasicRobot
 	 * <p>
 	 * @return the temporary Line
 	 */
-	public Line RWhiskerHandler()
+	public Line rWhiskerHandler()
 	{
 		/*Create object Temp of type Line*/
 		Line Temp = new Line();
@@ -208,7 +208,7 @@ public class WhiskerRobot extends BasicRobot
 	 * <p>
 	 * @return the temporary Line
 	 */
-	public Line LWhiskerHandler()
+	public Line lWhiskerHandler()
 	{
 		/*Create object Temp of type Line*/
 		Line Temp = new Line();
