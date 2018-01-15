@@ -97,7 +97,7 @@ public class Arena implements Serializable
 				/*Create a line between the passed X,Y values and the coordinates of the current object*/
 				Line Checker = new Line(X, Y, Contents.get(ct).GetXPosition(), Contents.get(ct).GetYPosition());
 				/*Check if line length is less than the size of the two objects and greater than 1*/
-				if(Checker.lineLength() < O.GetSize() + Contents.get(ct).GetSize() && Checker.lineLength() > 1)
+				if(Checker.lineLength() < O.GetSize() + Contents.get(ct).GetSize() && Checker.lineLength() >= 1)
 				{
 					/*Return True*/
 					return true;

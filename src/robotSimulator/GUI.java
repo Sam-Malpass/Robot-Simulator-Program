@@ -599,7 +599,7 @@ public class GUI extends Application
 		    		else
 		    		{
 		    			/*Send an error alert*/
-		    			AlertWindow("Error", " Arena at Capacity");
+		    			AlertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
 		    		}
 		    	}
 		    	/*Otherwise*/
@@ -634,7 +634,7 @@ public class GUI extends Application
 			    	else
 			    	{
 			    		/*Send out an error alert*/
-			    		AlertWindow("Error", " Arena at Capacity");
+			    		AlertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
 			    	}
 			   	}
 			    /*Otherwise*/
@@ -669,7 +669,7 @@ public class GUI extends Application
 			    	else
 			    	{
 			    		/*Send out an error alert*/
-			    		AlertWindow("Error", " Arena at Capacity");
+			    		AlertWindow("Error", "Robot failed to add, perhaps arena is full or there is nowhere to put a robot at this time");
 			    	}
 			   	}
 			    /*Otherwise*/
