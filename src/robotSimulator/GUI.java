@@ -164,9 +164,6 @@ public class GUI extends Application
 				gc.setFill(Color.RED);
 				/*Draw a circle to represent the body*/
 				gc.fillArc(X-S, Y-S, S*2, S*2, 0, 360, ArcType.ROUND);
-				String lol = "" + Arena.Contents.get(ct).GetID();
-				gc.setFill(Color.BLACK);
-				gc.fillText(lol, X, Y);
 				/*Set line width to 5 for the wheels*/
 				gc.setLineWidth(5);
 				/*If the robot's direction is UP*/
